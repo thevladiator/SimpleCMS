@@ -1,0 +1,91 @@
+<h1 id="article-title">5 Ways You Might Be Failing at Software Doneness</h1>
+<p>
+  One of the most anticipated acts at a circus is the juggler! He's a performer who can move five or six or more balls in the air at the same time. The really complicated juggling acts, however, add something extra to wow the crowd. The juggler first climbs some stairs, high up but still close enough for everyone to see. He's on a platform. The overhead lights are dim while one bright spotlight is on the juggler as he starts to juggle: one, two, three, four, five, and six balls moving effortlessly through the air, all in balance. He's good!
+</p>
+<p>
+  But now, a new spotlight illuminates everything to his right ... and everyone is amazed. It's a tightrope that runs across the entire stage to another platform.
+  The juggler then turns and faces the tightrope while juggling the six balls, and he starts walking slowly across. Step by step, balancing and juggling, he gets to the other side.
+  He then turns to face the crowd, catches each ball, and bows. The crowd roars in delight! He's done!
+</p>
+<p>In many ways, a software developer is a juggler who is keeping many balls in the air while simultaneously walking on a tightrope. If you drop any balls or you walk in the wrong direction, you will fail. If, on the other hand, you get to the right destination with all the balls in the air, you get to stop, take a bow, maybe get some applause, and be done with your software.</p>
+
+<h2>Being Done With Software Is Difficult</h2>
+Done? I've compiled the code, tested it, and it works. I am done ... right? Yes, you completed those tasks, but if you think more carefully, you may not be done with your software. Being done is harder than it sounds.
+<p>
+Looking back over your career, you can probably recall how many times you were told after you thought you were done with your software: "This is not how it's supposed to work."?Or there's my favorite line: "Why is the application not doing this also? It's part of your module, right?" You think to yourself: "I had no idea I was supposed to also implement this." During my many years of developing software systems, I've had my fair share of "not being done" when I thought I was. Over time, I've learned some signs that almost certainly point to failing at software "doneness."
+</p>
+<p>
+Let's take a look at some of the balls we need to juggle as software developers as we move our software to a "done" state. If we drop any of these balls, we're sure to fall short of being done.
+</p>
+
+<h3>1. Failing to Manage Software Requirements Changes</h3>
+Defining what "done" means is not trivial in software development. Software often starts with requirements that contain the definition of what a software system is supposed to do. Requirements contain ideas and meaning that must be understood by everyone involved, including developers.
+<p>
+Unfortunately, software requirements are, in many ways, like a chameleon. They often change while you're actually developing the software. In addition, the words used for the definition of "requirement" mean different things to different people. Passing a clear meaning to someone else is difficult.
+</p>
+<p>
+Some initial requirements may sound something like this: "The system will allow the user to enter their birthday. The system uses a user's age to compute their insurance premium." Even though you, as a developer, will most likely not write the requirements, you need to understand them in order to build the right functionality. So, after a quick discussion, you start writing code.
+</p>
+<p>
+But just as a chameleon changes its color based on its environment, software requirements change based on the environment. Now, as you write your code, the requirements have just changed and read like this: "The system uses a users' age, location, and current health to compute their insurance premium." If you don't ask for clarity when requirements change, you'll fail at being done with your software.
+</p>
+<p>
+This means you must communicate through whatever channel your company uses. Remember, you're the juggler, and you're the one who has to keep it all together. Communicate the consequences you see?and ask about what's unclear. If you just assume things and don't voice your concerns, you're almost guaranteed to build something that's incorrect, and you'll fail to be done with your software.
+</p>
+<p>
+Now that we have our requirements ball firmly in control and spinning, let's add the next ball to the mix.
+</p>
+
+<h2>2. Failing to Document Your Code for Maintenance Developers</h2>
+It may surprise you that I'm not including your coding skills on this list. Yes, not being a good programmer will definitely make you fail at being done. But that's too obvious to talk about here. The next practice that can make you fail at being done is how you package your code for the future.
+<p>
+This means we must talk about a very hot topic in the software development community, namely documenting your code. Without trying to open a can of worms, I'll say that, as a software developer, you're responsible for two types of code documentation: using good naming practices for variables and functions and using clear comments in your code.
+</p>
+<p>
+These simple things will clearly show that you care about the maintenance developer who'll be fixing your code sometime in the future. Whoever comes after you will thank you for having clear variable and function names and clear comments that document specific business decisions. I'm not talking about commenting things that are clear in the programming language you use, but rather decisions that have to do with your business objects and logic. Any surprising decisions you had to make as a programmer should be clearly documented.
+</p>
+<p>
+We now have two balls spinning, but we need to add a few more.
+</p>
+
+<h2>3. Failing to Compile Your Code With the Rest of the Application</h2>
+Oh, this is so obvious! You're saying: "Of course I'm compiling my code, and of course it passes the compilation. I wouldn't even think about saying I'm done if I can't compile my code." I know you can successfully compile your specific code.
+<p>
+However, what I mean to say is that you must ensure that your piece of functionality works correctly with the rest of the application, or at least doesn't break it. This means that you also have to compile your code together with the rest of the application. If you construct your codebase somewhat carefully, then you'll have the comfort of some automated tests. These will ensure that you're not breaking existing functionality. Even if building the entire codebase may take a long time, it's well worth it before committing your code to the common repository.
+</p>
+<p>
+When deadlines loom closely, we software developers are pushed to cut corners, especially if we have long compilation time. But we cannot cut this particular corner. If I break the entire application because I failed to compile my code with the rest of the application, the cost to my team is much higher than the cost of me taking a couple more hours to be done.
+</p>
+<p>
+With three balls spinning, we must add another one to the mix.
+</p>
+
+<h2>4. Failing to Adequately Test the Code</h2>
+Developers must be good friends with automated tests. Coding automated tests helps ensure that our functionality doesn't break when we or someone else changes it. I love automated tests because they provide very important guardrails that save us from potential disasters when code changes seem to break everything. Having good test coverage through automated unit and user interface tests provides so much comfort and goes a very long way in avoiding brittle code. This helps your software doneness.
+<p>
+In addition, writing a draft test plan will be very helpful, especially if there are software quality engineers taking over your "done" software in order to test it thoroughly. A few test cases that describe the expected behavior of your software will also help immensely in passing along the meaning of the requirements to software testers.
+</p>
+<p>
+Before calling it done, you should also have some minimal regression tests in mind, in addition to your functionality testing. This means that you should know how your code interacts with the rest of the application and test this interaction before calling it done.
+</p>
+<p>
+Unfortunately, the rush to get software out the door also pushes our automated tests. Yes, as a developer, you must do what's necessary for completing your software, but you do well when putting time into writing automated tests.
+</p>
+<p>
+Now, we need to add the final ball: the one that usually tends to throw everything out of balance.
+</p>
+
+<h2>5. Failing to Be Done on Time</h2>
+Due dates are the elephant in the room for software developers. Whatever interesting technologies or solutions we explore, they all submit to the harshest master: time. If we had no restrictions on time, we could do anything better, faster, and more beautifully. But the ever-ticking trickle of time brings a stark reality check to many dreams: Are you done yet? Why do you take so long to be done?
+<p>
+As you're already juggling all the other balls, the due date ball is a tough one to handle. Just like with requirement changes, the due date itself can change, which may throw off your rhythm. There's not much you can do about a changing due date other than communicating your concerns.
+</p>
+<p>
+Speak up when things don't make sense. Instead of simply saying "sure, I'll do that too," say "sure, I'll do that too, but this means I have to work the weekends." If you don't speak up, then you'll surely fail to be done with your software.
+</p>
+
+<h2>You Can Be a Pro at Software Doneness</h2>
+Here's a blunt statement: you, the software developer, are responsible for getting software done. You move a part of a software project from idea to reality. It's you who has to make sure that the reality you're creating matches the reality desired by your client. In a nutshell, you keep it all together and make it happen.
+<p>
+There are lots of balls to juggle at once: requirements, coding, documentation, testing, and due dates. The only way to complete your software is to understand and keep in mind the desired end state of your software. Keep track of requirement changes, document your code, compile and test it together with your application, and deliver it on time. Then you can truly be done, and hopefully get a pat on the back. Then move on to the next thing you're building.
+</p>

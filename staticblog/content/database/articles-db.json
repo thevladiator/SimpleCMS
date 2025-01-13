@@ -1,0 +1,36 @@
+{
+  "categories": ["Management","Software Development"],
+  "tags": ["Better Software","Feature Creep","Sprint Planning"],
+  "articles": [
+    {
+      "title": "Feature Creep Is a Problem. Learn How to Avoid It",
+      "slug": "feature-creep-is-a-problem",
+      "category": "Software Development",
+      "tags": ["Feature Creep"]
+    },
+    {
+      "title": "5 Ways You Might Be Failing at Software Doneness",
+      "slug": "failing-at-software-doneness",
+      "category": "Software Development",
+      "tags": ["Better Software"]
+    },
+    {
+      "title": "What Does The Sprint Planning Meeting Agenda Look Like?",
+      "slug": "sprint-planning-meeting-agenda",
+      "category": "Management",
+      "tags": ["Sprint Planning"]
+    },
+    {
+      "title": "3 Essential Steps for Better Software?",
+      "slug": "essential-steps-for-better-software",
+      "category": "Software Development",
+      "tags": ["Better Software"]
+    },
+    {
+      "title": "3 Essential Attributes of Good Software",
+      "slug": "characteristics-of-a-good-software",
+      "category": "Software Development",
+      "tags": ["Better Software"]
+    }
+  ]
+}

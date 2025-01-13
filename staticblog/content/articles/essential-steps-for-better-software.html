@@ -1,0 +1,52 @@
+<h1 id="article-title">3 Essential Steps for Better Software</h1>
+Assuming you already have a <a href="characteristics-of-a-good-software">good software product</a>, let's turn our attention now to making better software. How do you take a good software product and make it better? What makes better software?
+
+In this article I will define the essential attributes of better software and what a development team should focus on for moving an existing good software product to a better software product.
+<h2>1. Make Better Software by Creating Focused Value</h2>
+We've already agreed that the first essential attribute of good software is that it delivers value for a user. However, in order to make it better, this <strong>value creation</strong> needs to be taken to the next level. Here are 3 essential steps to create <strong>increasing user value</strong> in your software product:
+<h3>a. Deliver User Focused Value</h3>
+Yes, we all know that any successful product has to deliver user value. Users who struggle to extract efficiency and help from a product, will eventually switch to a different product if they have the opportunity.
+However, if users keep finding carefully designed features that help them be more efficient in their tasks, then they will be delighted with the product.
+Therefore, in order to make better software, you must focus on delivering user centered value. This takes lots of effort, but understanding and meeting on user goals will pay off always as users will remain loyal.
+On the other hand, if software development delivers unfocused features and careless user flows, then user delight will degrade and turn into mere tolerance and frustration.
+<p>
+How do you deliver user focused value in your software product ?
+</p>
+<h3>b. Get Real User Feedback</h3>
+In order to produce user focused value in your software, you must obtain real user feedback. While this sounds simplistic, the task of gathering real user feedback is non-trivial. However, effort spent in this area will yield significant rewards as users notice that their feedback actually drives the development.
+<blockquote>Software that consistently responds to user feedback becomes better.</blockquote>
+A very practical step for obtaining user feedback is to build a simple mechanism inside the software that makes it very easy for users to simply provide their feedback.
+<h3>c. Analyze Your Analytics and Support Tickets</h3>
+When you have a web based software application it is fairly easy to install an analytics product (i.e. Google Analytics). It should give you a robust picture of the most used parts of your application.
+
+When you get real user feedback and you combine it with product usage analytics data, you can assign real priority to software changes and features.
+
+Frequently looking at your support tickets provides another easy area that must inform value creation in your software.
+<h2>2. Better Software Works Better</h2>
+Good software works properly. In order to make good software even better, your development team must continually focus on improving performance. Here I don't necessarily mean that better software works faster than good software.
+<blockquote>Better software directs performance improvements in the most important areas.</blockquote>
+The following focused list represents some low hanging fruit with largest impact in performance. Focusing on these areas will make your good software a better software that will delight your users.
+<h3>a. Focus on Most Impactful Areas</h3>
+Your analytics data should also inform the areas for your focused performance improvements. The most used areas of your product should also be the ones that you target constantly for performance improvements.
+<h3>b. Optimize Database Queries</h3>
+Depending on your application, inefficient database queries can have a large negative impact on user experience. You must pay attention to all database queries, especially in the most used parts of your application.
+
+This is the area where database structure and query efficiency become very important.
+<h3>c. Simplify User Interface Structure</h3>
+Keeping a simple user interface goes a long way towards having a performant application. Granted, that many new features will inevitably add more complexity to the user interface, but keeping simplicity in mind when designing new features will help you create better software. When adding complexity to the user interface ask yourself questions like these: do I really need this new complexity? What is the user trying to achieve? Can hide data that might not be necessary for most users?
+<h2>3. Better Software focuses on efficient maintenance</h2>
+<h3>a. Prioritize New Features According to User Value</h3>
+Focusing your development on the user brings it full circle to maintenance. Knowing your user and your product analytics should make you very informed about how to prioritize your new features. Features that bring clear value to your users must be prioritized accordingly. This does not mean that you should not add any features that do not come directly from the user. For example, helping your support engineers to solve user problems many times requires you to build features in your product that are unseen to your users but invaluable to a support engineer.
+<h3>b. Keep Domain Objects in Sync with User Flows and Logic</h3>
+As a software application evolves and changes to meet user requests and changes, the underlying logical representation of data should change to reflect these changes.
+<p>
+Let me explain. Let's say your current software product saves one customer addresses so you can ship some product to them. Then a new requirement comes to implement direct charging of the customer credit card and you need to add a billing address that can be different than shipping address. In fact you also need to implement multiple shipping addresses per customer as well. While I admit that seems to be an archaic example, for the sake of argument, we can see that the underlying data structures must change to accommodate this new requirement. The address object now, has a category: shipping or billing. Currently however, data object structures and database tables can't easily accommodate new requirement without major refactoring.
+</p>
+<blockquote>Invest in refactoring domain objects and database structure so that they reflect user logic and flows.</blockquote>
+In examples like this, the best practice is to invest the effort to refactor both database and data object structures in order to match new user data and user flows. While the UI can be changed easily to accommodate new addresses, trying to fit new requirements into the existing data structures will create a deep divide between the intuitive understanding of the user flows and the actual data representation.
+<h3>c. Increase Product Confidence with Automated Testing</h3>
+<strong>Continuous integration</strong> is the process by which any code change that gets committed to the repository, gets compiled and integrated automatically with existing code. Immediate feedback on build and test failures must be a feature of any code repository products used (i.e. Jenkins, BitBucket, etc.). Additionally, best practices recommend that effort should be spent in developing robust unit tests and end to end test scripts that can be run automatically when new code gets integrated into the baseline. This automation will generate great improvements in efficiency and productivity.
+<h3>d. Improve Efficiency Through DevOps Automation</h3>
+DevOps has brought lots of innovation in software development. Making better software involves investing heavily into DevOps and development and deployment automation. The ideas of continuous delivery can be implemented so that there is quick delivery of new features and fixes to your testing environment which will enable you to quickly validate changes and verify the value they're bringing. Once value is verified these changes can confidently be release to the users on the next release train.
+<h2>Are you Building Better Software?</h2>
+Building better software is a complex process with multiple priorities. In this article I have discussed the tasks with the most impact on moving your good software towards a better software. Each of these stepping stones have their own complex details, but investing resources into these areas will result in great improvements in your product and will build confidence in your people.
