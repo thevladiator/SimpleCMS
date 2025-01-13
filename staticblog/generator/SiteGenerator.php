@@ -18,23 +18,14 @@
 
     public function generateSite() {
       $this->generateArticleFiles();
-      $this->generateArticleList();
       $this->generateHomePage();
-    }
-
-    public function generateArticleList() {
-      $listOutputFile = $this->config->CONTENT_ROOT . '/components/article-list.html';
-      $htmlContent = $this->articleList->toListHTML();
-      echo ">>> list: $htmlContent"; 
-      // Write the HTML content to the file 
-      file_put_contents($listOutputFile, $htmlContent);
-      echo "<br />Generated: $listOutputFile";
     }
 
     public function generateHomePage() {
       $homeInputFile = $this->config->CONTENT_ROOT . '/templates/home.php';
       $homeOutputFile = $this->config->SITE_ROOT . '/index.html';
 
+      $articleListHtml = $this->articleList->toListHTML();
       ob_start();
       include $homeInputFile;
       $htmlContent = ob_get_contents();
