@@ -1,10 +1,12 @@
 <?php
 
+  require_once dirname(__DIR__) . '/config/Config.php';
   require_once('Category.php');
   require_once('Tag.php');
 
   class Article {
     // Properties
+    public $config;
     public $title;
     public $slug;
     public $category;
@@ -14,6 +16,7 @@
 
     // Constructor
     public function __construct($title, $slug, $category, $tags) {
+      $this->config = new Config();
       $this->title = $title;
       $this->slug = $slug;
       $this->category = $category;
@@ -32,7 +35,7 @@
     }
 
     public function toListItemHTML() {
-        return "<li class=\"article-list-item\"><a href=\"articles/$this->slug\">$this->title</a></li>";
+        return "<li class=\"article-list-item\"><a href=\"{$this->config->SITE_URL_ROOT}/articles/$this->slug\">$this->title</a></li>";
     }
 
     public function debugArticle() {

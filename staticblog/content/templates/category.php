@@ -3,25 +3,16 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="styles/site.css">
+    <link rel="stylesheet" type="text/css" href="../styles/site.css">
   </head>
   <body>
     <?php 
       include (dirname(__DIR__) . '/components/header.html'); 
     ?>
     <div id="content">
-      <h2>Welcome</h2>
-      <h2>Articles:</h2>
+      <h2>Articles for category: <?php echo $category->title; ?></h2>
       <ul class="article-list">
         <?php echo $articleListHtml; ?>
-      </ul>
-      <h2>Categories:</h2>
-      <ul class="article-list">
-        <?php echo $categoryListHtml; ?>
-      </ul>
-      <h2>Tags:</h2>
-      <ul class="article-list">
-        <?php echo $tagListHtml; ?>
       </ul>
     </div>
     <?php include (dirname(__DIR__) . '/components/footer.html'); ?>

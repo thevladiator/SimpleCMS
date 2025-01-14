@@ -1,6 +1,6 @@
 <?php
   require_once dirname(__FILE__) . '/ArticleList.php';
-  require_once dirname(__FILE__) . '/Config.php';
+  require_once dirname(__FILE__) . '/config/Config.php';
 
   class SiteGenerator {
     private $articleList;
@@ -18,6 +18,8 @@
 
     public function generateSite() {
       $this->generateArticleFiles();
+      $this->generateCategoryPages();
+      $this->generateTagPages();
       $this->generateHomePage();
     }
 
@@ -26,7 +28,12 @@
       $homeOutputFile = $this->config->SITE_ROOT . '/index.html';
 
       $articleListHtml = $this->articleList->toListHTML();
+      $categoryListHtml = $this->articleList->toCategoryListHTML();
+      $tagListHtml = $this->articleList->toTagListHTML();
       ob_start();
+      extract(['articleListHtml' => $articleListHtml]);
+      extract(['categoryListHtml' => $categoryListHtml]);
+      extract(['tagListHtml' => $tagListHtml]);
       include $homeInputFile;
       $htmlContent = ob_get_contents();
       // End and clean the output buffer
@@ -49,5 +56,61 @@
         file_put_contents($articleOutputFile, $htmlContent);
       }
     }
+
+    public function generateCategoryPages() {
+      $categories = $this->articleList->getCategories();
+      foreach($categories as $category) {
+        $this->generateCategoryPage($category);
+      }
+    }
+
+    private function generateCategoryPage($category) {
+      $articlesPerCategory = $this->articleList->getArticlesPerCategory($category);
+
+      $articleListHtml = '';
+      foreach($articlesPerCategory as $article) {
+        $articleListHtml .= $article->toListItemHTML();
+      }
+      $categoryInputFile = $this->config->CONTENT_ROOT . "/templates/category.php";
+      $categoryOutputFile = $this->config->SITE_ROOT . "/categories/{$category->slug}.html";
+      ob_start();
+      extract(['category' => $category]);
+      extract(['articleListHtml' => $articleListHtml]);
+      include $categoryInputFile;
+      $htmlContent = ob_get_contents();
+      print_r($htmlContent);
+      ob_end_clean();
+      file_put_contents($categoryOutputFile, $htmlContent);
+    }
+
+    public function generateTagPages() {
+      $tags = $this->articleList->getTags();
+      foreach($tags as $tag) {
+        $this->generateTagPage($tag);
+      }
+    }
+  
+    private function generateTagPage($tag) {
+      $articlesPerTag = $this->articleList->getArticlesPerTag($tag);
+
+      // Initialize the variable outside the loop
+      $articleListHtml = ''; 
+      foreach($articlesPerTag as $article) {
+        $articleListHtml .= $article->toListItemHTML();
+      }
+
+      $tagInputFile = $this->config->CONTENT_ROOT . "/templates/tag.php";
+      $tagOutputFile = $this->config->SITE_ROOT . "/tags/{$tag->slug}.html";
+
+      ob_start();
+      // Make the variable available in the included file
+      extract(['tag' => $tag]);
+      extract(['articleListHtml' => $articleListHtml]);
+      include $tagInputFile;
+      $htmlContent = ob_get_contents();
+      ob_end_clean();
+      file_put_contents($tagOutputFile, $htmlContent);
+    }
   }
+
 ?>
