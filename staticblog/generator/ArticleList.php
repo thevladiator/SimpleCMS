@@ -16,9 +16,7 @@
 
       // Decode the JSON string into an associative array
       $dataArray = json_decode($jsonString, true);
-      print_r($dataArray);
       $articlesData = $dataArray['articles'];
-      print_r($articlesData);
 
       // Accessing the nested array (skills)
       foreach ($articlesData as $articleData) {

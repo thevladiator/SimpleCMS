@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="<?php echo $article->getArticleMetadata(); ?>">
     <link rel="stylesheet" type="text/css" href="../styles/site.css">
     <title><?php echo $article->title; ?></title>
-    <meta name="keywords" content="<?php echo $article->getArticleMetadata(); ?>">
   </head>
   <body>
     <?php include (dirname(__DIR__) . "/components/header.html"); ?>

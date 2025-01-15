@@ -12,15 +12,16 @@
     public function __construct() {
       $this->articleList = new ArticleList();
       $this->config = new Config();
-      echo "<br />ARTICLE LIST: <br />";
-      print_r($this->articleList);
     }
 
     public function generateSite() {
+      echo '<hr />';
+      $this->copyStyles();
       $this->generateArticleFiles();
       $this->generateCategoryPages();
       $this->generateTagPages();
       $this->generateHomePage();
+      echo '<hr />';
     }
 
     public function generateHomePage() {
@@ -47,13 +48,13 @@
       $articles = $this->articleList->getArticles();
       foreach($articles as $article) {
         $articleInputFile = $this->config->CONTENT_ROOT . "/templates/article.php";
-        $articleOutputFile = $this->config->SITE_ROOT . "/articles/$article->slug.html";
+        $articleOutputFile = $this->config->SITE_ROOT . "/articles/{$article->slug}.html";
         ob_start();
         include $articleInputFile;
         $htmlContent = ob_get_contents();
-        print_r($htmlContent);
         ob_end_clean();
         file_put_contents($articleOutputFile, $htmlContent);
+        echo "<br />Generated: $articleOutputFile";
       }
     }
 
@@ -78,9 +79,9 @@
       extract(['articleListHtml' => $articleListHtml]);
       include $categoryInputFile;
       $htmlContent = ob_get_contents();
-      print_r($htmlContent);
       ob_end_clean();
       file_put_contents($categoryOutputFile, $htmlContent);
+      echo "<br />Generated: $categoryOutputFile";
     }
 
     public function generateTagPages() {
@@ -110,6 +111,14 @@
       $htmlContent = ob_get_contents();
       ob_end_clean();
       file_put_contents($tagOutputFile, $htmlContent);
+      echo "<br />Generated: $tagOutputFile";
+    }
+
+    private function copyStyles() {
+      $styleInputFile = $this->config->CONTENT_ROOT . "/styles/site.css";
+      $styleOutputFile = $this->config->SITE_ROOT . "/styles/site.css";
+      copy($styleInputFile, $styleOutputFile);
+      echo "<br />Copied: $styleOutputFile";
     }
   }
 
