@@ -25,7 +25,7 @@
     }
 
     public function generateHomePage() {
-      $homeInputFile = $this->config->CONTENT_ROOT . '/templates/home.php';
+      $homeInputFile = $this->config->GENERATOR_ROOT . '/templates/home.php';
       $homeOutputFile = $this->config->SITE_ROOT . '/index.html';
 
       $articleListHtml = $this->articleList->toListHTML();
@@ -47,7 +47,7 @@
     public function generateArticleFiles() {
       $articles = $this->articleList->getArticles();
       foreach($articles as $article) {
-        $articleInputFile = $this->config->CONTENT_ROOT . "/templates/article.php";
+        $articleInputFile = $this->config->GENERATOR_ROOT . "/templates/article.php";
         $articleOutputFile = $this->config->SITE_ROOT . "/articles/{$article->slug}.html";
         ob_start();
         include $articleInputFile;
@@ -72,7 +72,7 @@
       foreach($articlesPerCategory as $article) {
         $articleListHtml .= $article->toListItemHTML();
       }
-      $categoryInputFile = $this->config->CONTENT_ROOT . "/templates/category.php";
+      $categoryInputFile = $this->config->GENERATOR_ROOT . "/templates/category.php";
       $categoryOutputFile = $this->config->SITE_ROOT . "/categories/{$category->slug}.html";
       ob_start();
       extract(['category' => $category]);
@@ -100,7 +100,7 @@
         $articleListHtml .= $article->toListItemHTML();
       }
 
-      $tagInputFile = $this->config->CONTENT_ROOT . "/templates/tag.php";
+      $tagInputFile = $this->config->GENERATOR_ROOT . "/templates/tag.php";
       $tagOutputFile = $this->config->SITE_ROOT . "/tags/{$tag->slug}.html";
 
       ob_start();
@@ -115,7 +115,7 @@
     }
 
     private function copyStyles() {
-      $styleInputFile = $this->config->CONTENT_ROOT . "/styles/site.css";
+      $styleInputFile = $this->config->GENERATOR_ROOT . "/styles/site.css";
       $styleOutputFile = $this->config->SITE_ROOT . "/styles/site.css";
       copy($styleInputFile, $styleOutputFile);
       echo "<br />Copied: $styleOutputFile";

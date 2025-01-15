@@ -13,7 +13,7 @@
       <?php echo $article->printArticleMetadata(); ?>
     </div>
     <div id="content">
-      <?php require_once (dirname(__DIR__) . "/articles/$article->slug.html"); ?>
+      <?php require_once (dirname(dirname(__DIR__)) . "/content/articles/$article->slug.html"); ?>
     </div>
     <div class="article-metadata">
       <?php echo $article->printArticleMetadata(); ?>

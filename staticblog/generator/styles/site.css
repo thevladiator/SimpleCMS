@@ -42,6 +42,14 @@ blockquote {
   padding: 5px;
 }
 
+#header {
+  border-bottom: 2px solid var(--accent-color);
+}
+
+#footer {
+  border-top: 2px solid var(--accent-color);
+}
+
 #header a {
   color: var(--background-color);
   text-decoration: none;
@@ -62,8 +70,6 @@ blockquote {
 }
 
 .article-metadata {
-  border-top: 1px solid var(--accent-color);
-  border-bottom: 1px solid var(--accent-color);
   padding: 5px;
   font-style: italic;
   background-color: var(--text-color);

@@ -1,9 +1,30 @@
-<html>
-  <body>
-    <h1>Site Generator</h1>
-    <hr />
-    <ol>
-      <li><a href="generator/generators/generateSite.php">Generate Site</a></li>
-    </ol>
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Site Generator</title>
+  <script>
+    function generateSite() {
+      document.getElementById('output').innerHTML = '';
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', 'generator/generators/generateSite.php', true);
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          document.getElementById('output').innerHTML = xhr.responseText;
+        }
+      };
+      xhr.send();
+    }
+  </script>
+</head>
+<body>
+  <h1>Site Generator</h1>
+  <hr />
+  <ol>
+    <li><a href="javascript:void(0);" onclick="generateSite();">Generate Site</a></li>
+  </ol>
+  <h2>Output:</h2>
+  <div id="output" style="border: 1px solid #ccc; padding: 10px; margin-top: 20px;"></div>
+</body>
 </html>
