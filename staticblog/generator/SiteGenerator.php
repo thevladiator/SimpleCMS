@@ -73,7 +73,7 @@
         $articleListHtml .= $article->toListItemHTML();
       }
       $categoryInputFile = $this->config->GENERATOR_ROOT . "/templates/category.php";
-      $categoryOutputFile = $this->config->SITE_ROOT . "/categories/{$category->slug}.html";
+      $categoryOutputFile = $this->config->SITE_ROOT . "/category/{$category->slug}.html";
       ob_start();
       extract(['category' => $category]);
       extract(['articleListHtml' => $articleListHtml]);
@@ -101,7 +101,7 @@
       }
 
       $tagInputFile = $this->config->GENERATOR_ROOT . "/templates/tag.php";
-      $tagOutputFile = $this->config->SITE_ROOT . "/tags/{$tag->slug}.html";
+      $tagOutputFile = $this->config->SITE_ROOT . "/tag/{$tag->slug}.html";
 
       ob_start();
       // Make the variable available in the included file

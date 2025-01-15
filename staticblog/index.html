@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Site Generator</title>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Static Website, Website Generator">
+    <link rel="stylesheet" type="text/css" href="generator/styles/site.css">
+    <title>Static Blog Generator</title>
   <script>
     function generateSite() {
       document.getElementById('output').innerHTML = '';
@@ -18,13 +20,13 @@
     }
   </script>
 </head>
-<body>
-  <h1>Site Generator</h1>
+<body style="font-size:16px">
+  <h1 id="site-title" style="color: white">Site Generator</h1>
   <hr />
   <ol>
     <li><a href="javascript:void(0);" onclick="generateSite();">Generate Site</a></li>
   </ol>
-  <h2>Output:</h2>
-  <div id="output" style="border: 1px solid #ccc; padding: 10px; margin-top: 20px;"></div>
+  <h2 style="color: white">Output:</h2>
+  <div id="output" style="border: 1px solid var(--color-accent); padding: 10px; margin-top: 20px; color:white"></div>
 </body>
 </html>

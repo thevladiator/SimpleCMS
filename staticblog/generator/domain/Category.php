@@ -17,11 +17,11 @@
       }
 
       public function toListItemHTML() {
-        return "<li class=\"category-list-item\"><a href=\"{$this->config->SITE_URL_ROOT}/categories/{$this->slug}.html\">$this->title</a></li>";
+        return "<li class=\"category-list-item\"><a href=\"{$this->config->SITE_URL_ROOT}/category/{$this->slug}.html\">$this->title</a></li>";
       }
 
       public function toLinkHTML() {
-        return "<span class=\"category-link\"><a href=\"{$this->config->SITE_URL_ROOT}/categories/{$this->slug}.html\">$this->title</a></span>";
+        return "<span class=\"category-link\"><a href=\"{$this->config->SITE_URL_ROOT}/category/{$this->slug}.html\">$this->title</a></span>";
       }
   }
 

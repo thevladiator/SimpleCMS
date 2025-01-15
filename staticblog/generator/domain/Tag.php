@@ -16,10 +16,10 @@
       }
 
       public function toListItemHTML() {
-        return "<li class=\"tag-list-item\"><a href=\"{$this->config->SITE_URL_ROOT}/tags/{$this->slug}.html\">$this->title</a></li>";
+        return "<li class=\"tag-list-item\"><a href=\"{$this->config->SITE_URL_ROOT}/tag/{$this->slug}.html\">$this->title</a></li>";
       }
       public function toLinkHTML() {
-        return "<span class=\"tag-link\"><a href=\"{$this->config->SITE_URL_ROOT}/tags/{$this->slug}.html\">$this->title</a></span>";
+        return "<span class=\"tag-link\"><a href=\"{$this->config->SITE_URL_ROOT}/tag/{$this->slug}.html\">$this->title</a></span>";
       }
   }
 
