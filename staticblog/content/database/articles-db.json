@@ -1,36 +1,36 @@
 {
-  "categories": ["Management","Software Development"],
-  "tags": ["Better Software","Feature Creep","Sprint Planning"],
+  "categories": ["France","Iceland"],
+  "tags": ["Road Trips","Paris","Shopping","Tourist Attractions"],
   "articles": [
     {
-      "title": "Feature Creep Is a Problem. Learn How to Avoid It",
-      "slug": "feature-creep-is-a-problem",
-      "category": "Software Development",
-      "tags": ["Better Software", "Feature Creep"]
+      "title": "5 Best Road Trips in France",
+      "slug": "france-best-roadtrips",
+      "category": "France",
+      "tags": ["Road Trips"]
     },
     {
-      "title": "5 Ways You Might Be Failing at Software Doneness",
-      "slug": "failing-at-software-doneness",
-      "category": "Software Development",
-      "tags": ["Better Software"]
+      "title": "5 Best Things to See in France",
+      "slug": "france-best-things",
+      "category": "France",
+      "tags": ["Tourist Attractions"]
     },
     {
-      "title": "What Does The Sprint Planning Meeting Agenda Look Like?",
-      "slug": "sprint-planning-meeting-agenda",
-      "category": "Management",
-      "tags": ["Sprint Planning"]
+      "title": "5 Best Things to See in Iceland",
+      "slug": "iceland-best-things",
+      "category": "Iceland",
+      "tags": ["Tourist Attractions"]
     },
     {
-      "title": "3 Essential Steps for Better Software",
-      "slug": "essential-steps-for-better-software",
-      "category": "Software Development",
-      "tags": ["Better Software"]
+      "title": "5 Best Places for Shopping in Paris",
+      "slug": "paris-best-shopping",
+      "category": "France",
+      "tags": ["Paris", "Shopping"]
     },
     {
-      "title": "3 Essential Attributes of Good Software",
-      "slug": "characteristics-of-a-good-software",
-      "category": "Software Development",
-      "tags": ["Better Software"]
+      "title": "5 Best Things to See in Paris",
+      "slug": "paris-best-things",
+      "category": "France",
+      "tags": ["Paris", "Tourist Attractions"]
     }
   ]
 }
