@@ -10,6 +10,23 @@
 
       return $slug;
     }
+
+    public static function minifyHtml($html) {
+      // Remove whitespaces after tags, except space
+      // Remove whitespaces before tags, except space
+      // Shorten multiple whitespace sequences
+      $search = [
+          '/\>[^\S ]+/s',
+          '/[^\S ]+\</s',
+          '/(\s)+/s'
+      ];
+      $replace = [
+          '>',
+          '<',
+          '\\1'
+      ];
+      return preg_replace($search, $replace, $html);
+    }
   }
   
 ?>

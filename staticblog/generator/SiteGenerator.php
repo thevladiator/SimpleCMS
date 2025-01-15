@@ -1,6 +1,7 @@
 <?php
-  require_once dirname(__FILE__) . '/ArticleList.php';
+  require_once dirname(__FILE__) . '/utils/Utilities.php';
   require_once dirname(__FILE__) . '/config/Config.php';
+  require_once dirname(__FILE__) . '/ArticleList.php';
 
   class SiteGenerator {
     private $articleList;
@@ -17,6 +18,7 @@
     public function generateSite() {
       echo '<hr />';
       $this->copyStyles();
+      $this->copyMedia();
       $this->generateArticleFiles();
       $this->generateCategoryPages();
       $this->generateTagPages();
@@ -53,7 +55,8 @@
         include $articleInputFile;
         $htmlContent = ob_get_contents();
         ob_end_clean();
-        file_put_contents($articleOutputFile, $htmlContent);
+        $minifiedHtml = Utilities::minifyHtml($htmlContent);
+        file_put_contents($articleOutputFile, $minifiedHtml);
         echo "<br />Generated: $articleOutputFile";
       }
     }
@@ -80,7 +83,8 @@
       include $categoryInputFile;
       $htmlContent = ob_get_contents();
       ob_end_clean();
-      file_put_contents($categoryOutputFile, $htmlContent);
+      $minifiedHtml = Utilities::minifyHtml($htmlContent);
+      file_put_contents($categoryOutputFile, $minifiedHtml);
       echo "<br />Generated: $categoryOutputFile";
     }
 
@@ -120,6 +124,29 @@
       copy($styleInputFile, $styleOutputFile);
       echo "<br />Copied: $styleOutputFile";
     }
+
+    private function copyMedia() {
+      $mediaSourceDir = $this->config->CONTENT_ROOT . "/media";
+      $mediaDestinationDir = $this->config->SITE_ROOT . "/media";
+      $this->recursiveCopy($mediaSourceDir, $mediaDestinationDir);
+      echo "<br />Copied: $mediaDestinationDir";
+    }
+
+    private function recursiveCopy($source, $destination) {
+      $dir = opendir($source);
+      @mkdir($destination);
+  
+      while (($file = readdir($dir)) !== false) {
+          if ($file != '.' && $file != '..') {
+              if (is_dir($source . '/' . $file)) {
+                  $this->recursiveCopy($source . '/' . $file, $destination . '/' . $file);
+              } else {
+                  copy($source . '/' . $file, $destination . '/' . $file);
+              }
+          }
+      }
+      closedir($dir);
+  }
   }
 
 ?>

@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="<?php echo htmlspecialchars($tag->title, ENT_QUOTES, 'UTF-8'); ?> Archive">
     <link rel="stylesheet" type="text/css" href="../styles/site.css">
     <title><?php echo "Articles about $tag->title"; ?></title>
   </head>
