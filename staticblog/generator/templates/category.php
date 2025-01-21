@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="<?php echo htmlspecialchars($category->title, ENT_QUOTES, 'UTF-8'); ?> Archive">
+    <meta name="keywords" content="<?php echo $category->title; ?>">
+    <meta name="description" content="<?php echo "Articles about $category->title"; ?> ?> Archive">
     <link rel="stylesheet" type="text/css" href="../styles/site.css">
     <title><?php echo "Articles about $category->title"; ?></title>
   </head>

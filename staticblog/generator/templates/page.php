@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="travel, adventure, hiking, camping, backpacking">
-    <meta name="description" content="<?php echo htmlspecialchars($page->title, ENT_QUOTES, 'UTF-8'); ?>">
+    <meta name="keywords" content="Software Development, Programming">
+    <meta name="description" content="<?php echo $page->title; ?>">
     <link rel="stylesheet" type="text/css" href="../styles/site.css">
-    <title><?php echo $article->title; ?></title>
+    <title><?php echo $page->title; ?></title>
   </head>
   <body>
     <?php include (dirname(__DIR__) . "/components/header.html"); ?>
