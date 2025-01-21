@@ -1,6 +1,20 @@
 {
   "categories": ["France","Iceland"],
   "tags": ["Road Trips","Paris","Shopping","Tourist Attractions"],
+  "pages": [
+    {
+      "title": "Home",
+      "slug": "home"
+    },
+    {
+      "title": "About",
+      "slug": "about"
+    },
+    {
+      "title": "Contact",
+      "slug": "contact"
+    }
+  ],
   "articles": [
     {
       "title": "5 Best Road Trips in France",

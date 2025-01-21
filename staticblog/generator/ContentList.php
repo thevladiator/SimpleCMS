@@ -1,9 +1,11 @@
 <?php
   require_once dirname(__FILE__) . '/config/Config.php';
   require_once dirname(__FILE__) . '/domain/Article.php';
+  require_once dirname(__FILE__) . '/domain/Page.php';
 
-  class ArticleList {
+  class ContentList {
     private $articles = [];
+    private $pages = [];
     private $categories = [];
     private $tags = [];
     private $config;
@@ -16,13 +18,23 @@
 
       // Decode the JSON string into an associative array
       $dataArray = json_decode($jsonString, true);
-      $articlesData = $dataArray['articles'];
 
-      // Accessing the nested array (skills)
+      $articlesData = $dataArray['articles'];
       foreach ($articlesData as $articleData) {
         // Define the output file
         $article = new Article($articleData['title'], $articleData['slug'], $articleData['category'], $articleData['tags']);
         array_push($this->articles, $article);
+      }
+
+      $pagesData = $dataArray['pages'];
+      // We don't want Home to be in the list of pages
+      $filteredPagesData = array_filter($pagesData, function($pageData) {
+        return $pageData['title'] !== 'Home';
+      });
+      foreach ($filteredPagesData as $pageData) {
+        // Define the output file
+        $page = new Page($pageData['title'], $pageData['slug']);
+        array_push($this->pages, $page);
       }
 
       $categoriesData = $dataArray['categories'];
@@ -40,6 +52,10 @@
 
     public function getArticles() {
       return $this->articles;
+    }
+
+    public function getPages() {
+      return $this->pages;
     }
 
     public function getArticlesPerCategory($category) {
@@ -70,10 +86,19 @@
       return $this->tags;
     }
 
-    public function toListHTML() {
+    public function toArticleListHTML() {
       $listHtml = '';
       foreach($this->articles as $article) {
         $listHtml = $listHtml . $article->toListItemHTML();
+      }
+
+      return $listHtml;
+    }
+
+    public function toPageListHTML() {
+      $listHtml = '';
+      foreach($this->pages as $page) {
+        $listHtml = $listHtml . $page->toListItemHTML();
       }
 
       return $listHtml;

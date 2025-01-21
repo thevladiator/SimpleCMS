@@ -1,17 +1,17 @@
 <?php
   require_once dirname(__FILE__) . '/utils/Utilities.php';
   require_once dirname(__FILE__) . '/config/Config.php';
-  require_once dirname(__FILE__) . '/ArticleList.php';
+  require_once dirname(__FILE__) . '/ContentList.php';
 
   class SiteGenerator {
-    private $articleList;
+    private $contentList;
     private $config;
     private $contentDir;
     private $siteDir;
 
     // Constructor
     public function __construct() {
-      $this->articleList = new ArticleList();
+      $this->contentList = new ContentList();
       $this->config = new Config();
     }
 
@@ -20,6 +20,7 @@
       $this->copyStyles();
       $this->copyMedia();
       $this->generateArticleFiles();
+      $this->generatePageFiles();
       $this->generateCategoryPages();
       $this->generateTagPages();
       $this->generateHomePage();
@@ -30,11 +31,13 @@
       $homeInputFile = $this->config->GENERATOR_ROOT . '/templates/home.php';
       $homeOutputFile = $this->config->SITE_ROOT . '/index.html';
 
-      $articleListHtml = $this->articleList->toListHTML();
-      $categoryListHtml = $this->articleList->toCategoryListHTML();
-      $tagListHtml = $this->articleList->toTagListHTML();
+      $articleListHtml = $this->contentList->toArticleListHTML();
+      $pageListHtml = $this->contentList->toPageListHTML();
+      $categoryListHtml = $this->contentList->toCategoryListHTML();
+      $tagListHtml = $this->contentList->toTagListHTML();
       ob_start();
       extract(['articleListHtml' => $articleListHtml]);
+      extract(['pageListHtml' => $pageListHtml]);
       extract(['categoryListHtml' => $categoryListHtml]);
       extract(['tagListHtml' => $tagListHtml]);
       include $homeInputFile;
@@ -47,7 +50,7 @@
     }
 
     public function generateArticleFiles() {
-      $articles = $this->articleList->getArticles();
+      $articles = $this->contentList->getArticles();
       foreach($articles as $article) {
         $articleInputFile = $this->config->GENERATOR_ROOT . "/templates/article.php";
         $articleOutputFile = $this->config->SITE_ROOT . "/articles/{$article->slug}.html";
@@ -57,19 +60,34 @@
         ob_end_clean();
         $minifiedHtml = Utilities::minifyHtml($htmlContent);
         file_put_contents($articleOutputFile, $minifiedHtml);
-        echo "<br />Generated: $articleOutputFile";
+        echo "<br />Generated Article: $articleOutputFile";
+      }
+    }
+
+    public function generatePageFiles() {
+      $pages = $this->contentList->getPages();
+      foreach($pages as $page) {
+        $pageInputFile = $this->config->GENERATOR_ROOT . "/templates/page.php";
+        $pageOutputFile = $this->config->SITE_ROOT . "/pages/{$page->slug}.html";
+        ob_start();
+        include $pageInputFile;
+        $htmlContent = ob_get_contents();
+        ob_end_clean();
+        $minifiedHtml = Utilities::minifyHtml($htmlContent);
+        file_put_contents($pageOutputFile, $minifiedHtml);
+        echo "<br />Generated Page: $pageOutputFile";
       }
     }
 
     public function generateCategoryPages() {
-      $categories = $this->articleList->getCategories();
+      $categories = $this->contentList->getCategories();
       foreach($categories as $category) {
         $this->generateCategoryPage($category);
       }
     }
 
     private function generateCategoryPage($category) {
-      $articlesPerCategory = $this->articleList->getArticlesPerCategory($category);
+      $articlesPerCategory = $this->contentList->getArticlesPerCategory($category);
 
       $articleListHtml = '';
       foreach($articlesPerCategory as $article) {
@@ -85,18 +103,18 @@
       ob_end_clean();
       $minifiedHtml = Utilities::minifyHtml($htmlContent);
       file_put_contents($categoryOutputFile, $minifiedHtml);
-      echo "<br />Generated: $categoryOutputFile";
+      echo "<br />Generated categories: $categoryOutputFile";
     }
 
     public function generateTagPages() {
-      $tags = $this->articleList->getTags();
+      $tags = $this->contentList->getTags();
       foreach($tags as $tag) {
         $this->generateTagPage($tag);
       }
     }
   
     private function generateTagPage($tag) {
-      $articlesPerTag = $this->articleList->getArticlesPerTag($tag);
+      $articlesPerTag = $this->contentList->getArticlesPerTag($tag);
 
       // Initialize the variable outside the loop
       $articleListHtml = ''; 
@@ -115,7 +133,7 @@
       $htmlContent = ob_get_contents();
       ob_end_clean();
       file_put_contents($tagOutputFile, $htmlContent);
-      echo "<br />Generated: $tagOutputFile";
+      echo "<br />Generated tags: $tagOutputFile";
     }
 
     private function copyStyles() {

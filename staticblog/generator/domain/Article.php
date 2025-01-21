@@ -35,7 +35,7 @@
     }
 
     public function toListItemHTML() {
-        return "<li class=\"article-list-item\"><a href=\"{$this->config->SITE_URL_ROOT}/articles/$this->slug\">$this->title</a></li>";
+        return "<li class=\"article-list-item\"><a href=\"{$this->config->SITE_URL_ROOT}/articles/{$this->slug}.html\">$this->title</a></li>";
     }
 
     public function debugArticle() {

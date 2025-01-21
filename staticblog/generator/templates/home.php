@@ -11,10 +11,14 @@
       include (dirname(__DIR__) . '/components/header.html'); 
     ?>
     <div id="content">
-      <h2>Welcome</h2>
+      <?php include (dirname(dirname(__DIR__)) . "/content/pages/home.html"); ?>
       <h2>Articles:</h2>
       <ul class="article-list">
         <?php echo $articleListHtml; ?>
+      </ul>
+      <h2>Pages:</h2>
+      <ul class="article-list">
+        <?php echo $pageListHtml; ?>
       </ul>
       <h2>Categories:</h2>
       <ul class="article-list">
