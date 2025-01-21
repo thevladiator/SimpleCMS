@@ -2,8 +2,9 @@
 :root {
   --background-color: white;
   --text-color: black;
-  --secondary-color: whitesmoke;
+  --secondary-color: beige;
   --accent-color: red;
+  --emphasize-color: green;
 }
 
 body {
@@ -69,26 +70,29 @@ blockquote {
 #article-title {
   text-align: center;
   color: var(--accent-color);
+  margin:0;
 }
 
 .article-metadata {
   padding: 5px;
   font-style: italic;
-  background-color: var(--text-color);
-  color: var(--background-color);
+  background-color: var(--secondary-color);
+  color: var(--text-color);
   text-align: center;
 }
 
 .highlight {
   display: block;
+  font-style:italic;
   background-color: var(--secondary-color);
-  padding: 5px;
-  margin: 5px;
+  padding: 10px;
+  margin: 10px;
 }
 
 .emphasize {
   font-weight: bold;
-  color: var(--accent-color);
+  font-style: italic;
+  color: var(--emphasize-color);
 }
 
 .image {
@@ -105,4 +109,24 @@ blockquote {
   height: auto;
   margin: 0 auto;
   padding: 5px;
+}
+
+#menu {
+  display:flex;
+  background-color: var(--text-color);
+  color: var(--background-color);
+  justify-content:center;
+}
+
+#menu-list {
+  list-style-type: none;
+  display:flex;
+  flex-direction: row;
+  padding: 0;
+  margin: 0;
+}
+
+#menu-list li {
+  padding-right: 5px;
+  margin-right: 5px;
 }

@@ -121,5 +121,9 @@
 
       return $listHtml;
     }
+
+    public function getMenu() {
+      return $this->toCategoryListHTML() . $this->toPageListHTML();
+    }
   }
 ?>

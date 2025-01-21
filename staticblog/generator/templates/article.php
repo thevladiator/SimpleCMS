@@ -9,7 +9,10 @@
     <title><?php echo $article->title; ?></title>
   </head>
   <body>
-    <?php include (dirname(__DIR__) . "/components/header.html"); ?>
+    <?php
+      include (dirname(__DIR__) . '/components/header.html');
+      include (dirname(__DIR__) . '/components/menu.html');
+    ?>
     <div class="article-metadata">
       <?php echo $article->printArticleMetadata(); ?>
     </div>

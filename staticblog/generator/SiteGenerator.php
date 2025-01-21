@@ -19,6 +19,7 @@
       echo '<hr />';
       $this->copyStyles();
       $this->copyMedia();
+      $this->generateMenu();
       $this->generateArticleFiles();
       $this->generatePageFiles();
       $this->generateCategoryPages();
@@ -47,6 +48,18 @@
       // Write the HTML content to the file 
       file_put_contents($homeOutputFile, $htmlContent);
       echo "<br />Generated: $homeOutputFile";
+    }
+
+    public function generateMenu() {
+      $menuInputFile = $this->config->GENERATOR_ROOT . "/templates/menu.php";
+      $menuOutputFile = $this->config->GENERATOR_ROOT . "/components/menu.html";
+      ob_start();
+      extract(['menuListHtml' => $this->contentList->getMenu()]);
+      include $menuInputFile;
+      $htmlContent = ob_get_contents();
+      ob_end_clean();
+      file_put_contents($menuOutputFile, $htmlContent);
+      echo "<br />Generated: $menuOutputFile";
     }
 
     public function generateArticleFiles() {

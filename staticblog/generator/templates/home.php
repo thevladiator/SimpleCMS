@@ -8,7 +8,8 @@
   </head>
   <body>
     <?php 
-      include (dirname(__DIR__) . '/components/header.html'); 
+      include (dirname(__DIR__) . '/components/header.html');
+      include (dirname(__DIR__) . '/components/menu.html');
     ?>
     <div id="content">
       <?php include (dirname(dirname(__DIR__)) . "/content/pages/home.html"); ?>
