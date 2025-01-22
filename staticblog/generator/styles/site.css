@@ -59,7 +59,7 @@ blockquote {
 
 #content {
   background-color: var(--background-color);
-  padding: 5px;
+  padding: 10px;
 }
 
 #site-title {
