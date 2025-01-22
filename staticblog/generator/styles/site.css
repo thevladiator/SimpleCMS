@@ -104,7 +104,6 @@ blockquote {
   display: block;
   text-align: center;
   font-style: italic;
-  padding: 5px;
 }
 
 .image img {
@@ -112,7 +111,6 @@ blockquote {
   max-width: 100%;
   height: auto;
   margin: 0 auto;
-  padding: 5px;
 }
 
 #menu {
@@ -135,4 +133,23 @@ blockquote {
 #menu-list li {
   padding-right: 5px;
   margin-right: 5px;
+}
+
+/* Media query for mobile devices */
+@media (max-width: 600px) {
+  body {
+    font-size: 22px;
+  }
+
+  #site-title {
+    font-size: 28px;
+  }
+
+  #footer {
+    font-size: 18px;
+  }
+
+  #article-title {
+    font-size: 26px;
+  }
 }
