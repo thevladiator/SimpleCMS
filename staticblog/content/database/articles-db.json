@@ -1,5 +1,5 @@
 {
-  "categories": ["France","Iceland"],
+  "categories": ["France Travel","Iceland Travel"],
   "tags": ["Road Trips","Paris","Shopping","Tourist Attractions"],
   "pages": [
     {
@@ -19,31 +19,31 @@
     {
       "title": "5 Best Road Trips in France",
       "slug": "france-best-roadtrips",
-      "category": "France",
+      "category": "France Travel",
       "tags": ["Road Trips"]
     },
     {
       "title": "5 Best Things to See in France",
       "slug": "france-best-things",
-      "category": "France",
+      "category": "France Travel",
       "tags": ["Tourist Attractions"]
     },
     {
       "title": "5 Best Things to See in Iceland",
       "slug": "iceland-best-things",
-      "category": "Iceland",
+      "category": "Iceland Travel",
       "tags": ["Tourist Attractions"]
     },
     {
       "title": "5 Best Places for Shopping in Paris",
       "slug": "paris-best-shopping",
-      "category": "France",
+      "category": "France Travel",
       "tags": ["Paris", "Shopping"]
     },
     {
       "title": "5 Best Things to See in Paris",
       "slug": "paris-best-things",
-      "category": "France",
+      "category": "France Travel",
       "tags": ["Paris", "Tourist Attractions"]
     }
   ]

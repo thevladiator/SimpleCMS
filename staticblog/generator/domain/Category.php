@@ -20,6 +20,12 @@
         return "<li class=\"category-list-item\"><a href=\"{$this->config->SITE_URL_ROOT}/category/{$this->slug}.html\">$this->title</a></li>";
       }
 
+      // We want to display only the first word of the category title
+      public function toMenuItemHTML() {
+        $firstWord = explode(' ', trim($this->title))[0];
+        return "<li class=\"category-list-item\"><a href=\"{$this->config->SITE_URL_ROOT}/category/{$this->slug}.html\">$firstWord</a></li>";
+      }
+
       public function toLinkHTML() {
         return "<span class=\"category-link\"><a href=\"{$this->config->SITE_URL_ROOT}/category/{$this->slug}.html\">$this->title</a></span>";
       }

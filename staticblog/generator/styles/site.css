@@ -95,6 +95,10 @@ blockquote {
   color: var(--emphasize-color);
 }
 
+.accentuate {
+  color: var(--accent-color);
+}
+
 .image {
   background-color: var(--secondary-color);
   display: block;
@@ -122,6 +126,8 @@ blockquote {
   list-style-type: none;
   display:flex;
   flex-direction: row;
+  overflow-x: auto;
+  white-space: nowrap;
   padding: 0;
   margin: 0;
 }

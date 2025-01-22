@@ -113,6 +113,15 @@
       return $listHtml;
     }
 
+    public function toCategoryMenuHTML() {
+      $listHtml = '';
+      foreach($this->categories as $category) {
+        $listHtml = $listHtml . $category->toMenuItemHTML();
+      }
+
+      return $listHtml;
+    }
+
     public function toTagListHTML() {
       $listHtml = '';
       foreach($this->tags as $tag) {
@@ -123,7 +132,7 @@
     }
 
     public function getMenu() {
-      return $this->toCategoryListHTML() . $this->toPageListHTML();
+      return $this->toCategoryMenuHTML() . $this->toPageListHTML();
     }
   }
 ?>
