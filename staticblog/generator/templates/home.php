@@ -11,7 +11,7 @@
   </head>
   <body>
     <?php 
-      include (dirname(__DIR__) . '/components/header.html');
+      include (dirname(__DIR__) . '/components/header.php');
       include (dirname(__DIR__) . '/components/menu.html');
     ?>
     <div id="content">
@@ -33,6 +33,6 @@
         <?php echo $tagListHtml; ?>
       </ul>
     </div>
-    <?php include (dirname(__DIR__) . '/components/footer.html'); ?>
+    <?php include (dirname(__DIR__) . '/components/footer.php'); ?>
   </body>
 </html>

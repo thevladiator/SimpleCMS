@@ -11,7 +11,7 @@
   </head>
   <body>
     <?php
-      include (dirname(__DIR__) . '/components/header.html');
+      include (dirname(__DIR__) . '/components/header.php');
       include (dirname(__DIR__) . '/components/menu.html');
     ?>
     <div class="article-metadata">
@@ -23,6 +23,6 @@
     <div class="article-metadata">
       <?php echo $article->printArticleMetadata(); ?>
     </div>
-    <?php include (dirname(__DIR__) . "/components/footer.html"); ?>
+    <?php include (dirname(__DIR__) . "/components/footer.php"); ?>
   </body>
 </html>

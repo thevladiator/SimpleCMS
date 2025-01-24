@@ -11,8 +11,8 @@
   </head>
   <body>
     <?php 
-      include (dirname(__DIR__) . '/components/header.html');
-      include (dirname(__DIR__) . '/components/menu.html');
+      include (dirname(__DIR__) . '/components/header.php');
+      include (dirname(__DIR__) . '/components/menu.php');
     ?>
     <div id="content">
       <h2><?php echo $tag->title; ?> Articles:</h2>
