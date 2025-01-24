@@ -17,6 +17,7 @@
 
     public function generateSite() {
       echo '<hr />';
+      $this->cleanupSiteFolders();
       $this->copyStyles();
       $this->copyMedia();
       $this->generateMenu();
@@ -47,7 +48,7 @@
       ob_end_clean(); 
       // Write the HTML content to the file 
       file_put_contents($homeOutputFile, $htmlContent);
-      echo "<br />Generated: $homeOutputFile";
+      echo "<br />+ Generated: $homeOutputFile";
     }
 
     public function generateMenu() {
@@ -59,7 +60,7 @@
       $htmlContent = ob_get_contents();
       ob_end_clean();
       file_put_contents($menuOutputFile, $htmlContent);
-      echo "<br />Generated: $menuOutputFile";
+      echo "<br />+ Generated: $menuOutputFile";
     }
 
     public function generateArticleFiles() {
@@ -73,7 +74,7 @@
         ob_end_clean();
         $minifiedHtml = Utilities::minifyHtml($htmlContent);
         file_put_contents($articleOutputFile, $minifiedHtml);
-        echo "<br />Generated Article: $articleOutputFile";
+        echo "<br />+ Generated Article: $articleOutputFile";
       }
     }
 
@@ -88,7 +89,7 @@
         ob_end_clean();
         $minifiedHtml = Utilities::minifyHtml($htmlContent);
         file_put_contents($pageOutputFile, $minifiedHtml);
-        echo "<br />Generated Page: $pageOutputFile";
+        echo "<br />+ Generated Page: $pageOutputFile";
       }
     }
 
@@ -116,7 +117,7 @@
       ob_end_clean();
       $minifiedHtml = Utilities::minifyHtml($htmlContent);
       file_put_contents($categoryOutputFile, $minifiedHtml);
-      echo "<br />Generated categories: $categoryOutputFile";
+      echo "<br />+ Generated categories: $categoryOutputFile";
     }
 
     public function generateTagPages() {
@@ -146,38 +147,31 @@
       $htmlContent = ob_get_contents();
       ob_end_clean();
       file_put_contents($tagOutputFile, $htmlContent);
-      echo "<br />Generated tags: $tagOutputFile";
+      echo "<br />+ Generated tags: $tagOutputFile";
     }
 
     private function copyStyles() {
       $styleInputFile = $this->config->GENERATOR_ROOT . "/styles/site.css";
       $styleOutputFile = $this->config->SITE_ROOT . "/styles/site.css";
       copy($styleInputFile, $styleOutputFile);
-      echo "<br />Copied: $styleOutputFile";
+      echo "<br />+ Copied: $styleOutputFile";
     }
 
     private function copyMedia() {
+      
       $mediaSourceDir = $this->config->CONTENT_ROOT . "/media";
       $mediaDestinationDir = $this->config->SITE_ROOT . "/media";
-      $this->recursiveCopy($mediaSourceDir, $mediaDestinationDir);
-      echo "<br />Copied: $mediaDestinationDir";
+      Utilities::recursiveCopy($mediaSourceDir, $mediaDestinationDir);
+      echo "<br />+ Copied: $mediaDestinationDir";
     }
 
-    private function recursiveCopy($source, $destination) {
-      $dir = opendir($source);
-      @mkdir($destination);
-  
-      while (($file = readdir($dir)) !== false) {
-          if ($file != '.' && $file != '..') {
-              if (is_dir($source . '/' . $file)) {
-                  $this->recursiveCopy($source . '/' . $file, $destination . '/' . $file);
-              } else {
-                  copy($source . '/' . $file, $destination . '/' . $file);
-              }
-          }
-      }
-      closedir($dir);
+    private function cleanupSiteFolders() {
+      Utilities::deleteDirectoryAndRecreate($this->config->SITE_ROOT . "/articles");
+      Utilities::deleteDirectoryAndRecreate($this->config->SITE_ROOT . "/pages");
+      Utilities::deleteDirectoryAndRecreate($this->config->SITE_ROOT . "/category");
+      Utilities::deleteDirectoryAndRecreate($this->config->SITE_ROOT . "/tag");
+      Utilities::deleteDirectoryAndRecreate($this->config->SITE_ROOT . "/media");
+      Utilities::deleteDirectoryAndRecreate($this->config->SITE_ROOT . "/styles");
+    }
   }
-  }
-
 ?>
