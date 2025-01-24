@@ -38,6 +38,9 @@
       $categoryListHtml = $this->contentList->toCategoryListHTML();
       $tagListHtml = $this->contentList->toTagListHTML();
       ob_start();
+      extract(['siteName' => $this->config->SITE_NAME]);
+      extract(['siteDescription' => $this->config->SITE_DESCRIPTION]);
+      extract(['siteKeywords' => $this->config->SITE_KEYWORDS]);
       extract(['articleListHtml' => $articleListHtml]);
       extract(['pageListHtml' => $pageListHtml]);
       extract(['categoryListHtml' => $categoryListHtml]);
@@ -69,6 +72,8 @@
         $articleInputFile = $this->config->GENERATOR_ROOT . "/templates/article.php";
         $articleOutputFile = $this->config->SITE_ROOT . "/articles/{$article->slug}.html";
         ob_start();
+        extract(['siteName' => $this->config->SITE_NAME]);
+        extract(['article' => $article]);
         include $articleInputFile;
         $htmlContent = ob_get_contents();
         ob_end_clean();
@@ -84,6 +89,8 @@
         $pageInputFile = $this->config->GENERATOR_ROOT . "/templates/page.php";
         $pageOutputFile = $this->config->SITE_ROOT . "/pages/{$page->slug}.html";
         ob_start();
+        extract(['siteName' => $this->config->SITE_NAME]);
+        extract(['page' => $page]);
         include $pageInputFile;
         $htmlContent = ob_get_contents();
         ob_end_clean();
@@ -110,6 +117,7 @@
       $categoryInputFile = $this->config->GENERATOR_ROOT . "/templates/category.php";
       $categoryOutputFile = $this->config->SITE_ROOT . "/category/{$category->slug}.html";
       ob_start();
+      extract(['siteName' => $this->config->SITE_NAME]);
       extract(['category' => $category]);
       extract(['articleListHtml' => $articleListHtml]);
       include $categoryInputFile;
@@ -140,7 +148,7 @@
       $tagOutputFile = $this->config->SITE_ROOT . "/tag/{$tag->slug}.html";
 
       ob_start();
-      // Make the variable available in the included file
+      extract(['siteName' => $this->config->SITE_NAME]);
       extract(['tag' => $tag]);
       extract(['articleListHtml' => $articleListHtml]);
       include $tagInputFile;

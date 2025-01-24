@@ -20,6 +20,11 @@
     public function toListItemHTML() {
         return "<li class=\"page-list-item\"><a href=\"{$this->config->SITE_URL_ROOT}/pages/{$this->slug}.html\">$this->title</a></li>";
     }
+
+    public function toCommaSeparatedTitle() {
+      $words = explode(' ', trim($this->title));
+      return implode(', ', $words);
+    }
   }
 
 ?>
