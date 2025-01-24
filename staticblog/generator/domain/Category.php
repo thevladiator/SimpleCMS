@@ -29,6 +29,11 @@
       public function toLinkHTML() {
         return "<span class=\"category-link\"><a href=\"{$this->config->SITE_URL_ROOT}/category/{$this->slug}.html\">$this->title</a></span>";
       }
+
+      public function toCommaSeparatedTitle() {
+        $words = explode(' ', trim($this->title));
+        return implode(', ', $words);
+      }
   }
 
 ?>

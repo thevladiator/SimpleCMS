@@ -3,10 +3,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="<?php echo $category->title; ?>">
-    <meta name="description" content="<?php echo "Articles about $category->title"; ?> ?> Archive">
+    <meta name="keywords" content="<?php echo $category->toCommaSeparatedTitle(); ?>">
+    <meta name="description" content="<?php echo "Articles about $category->title"; ?>">
+    <meta name="robots" content="index, follow">
     <link rel="stylesheet" type="text/css" href="../styles/site.css">
-    <title><?php echo "Articles about $category->title"; ?></title>
+    <title><?php echo $category->title; ?> Articles</title>
   </head>
   <body>
     <?php 
