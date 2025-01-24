@@ -3,11 +3,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="<?php echo $siteKeywords; ?>">
-    <meta name="description" content="<?php echo $siteDescription; ?>">
+    <meta name="keywords" content="<?php echo htmlspecialchars($siteKeywords, ENT_QUOTES, 'UTF-8'); ?>">
+    <meta name="description" content="<?php echo htmlspecialchars($siteDescription, ENT_QUOTES, 'UTF-8'); ?>">
     <meta name="robots" content="index, follow">
     <link rel="stylesheet" type="text/css" href="styles/site.css">
-    <title><?php echo $siteName; ?></title>
+    <title><?php echo htmlspecialchars($siteName, ENT_QUOTES, 'UTF-8'); ?></title>
   </head>
   <body>
     <?php 

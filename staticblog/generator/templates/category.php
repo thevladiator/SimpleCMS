@@ -3,11 +3,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="<?php echo $category->toCommaSeparatedTitle(); ?>">
-    <meta name="description" content="<?php echo "Articles about $category->title"; ?>">
+    <meta name="keywords" content="<?php echo htmlspecialchars($category->toCommaSeparatedTitle(), ENT_QUOTES, 'UTF-8'); ?>">
+    <meta name="description" content="Articles about <?php echo htmlspecialchars($category->title, ENT_QUOTES, 'UTF-8'); ?>">
     <meta name="robots" content="index, follow">
     <link rel="stylesheet" type="text/css" href="../styles/site.css">
-    <title><?php echo $category->title; ?> Articles</title>
+    <title><?php echo htmlspecialchars($category->title, ENT_QUOTES, 'UTF-8') . ' Articles'; ?></title>
   </head>
   <body>
     <?php 
