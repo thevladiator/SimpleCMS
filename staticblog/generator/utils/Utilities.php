@@ -63,7 +63,7 @@
       while (($file = readdir($dir)) !== false) {
           if ($file != '.' && $file != '..') {
               if (is_dir($source . '/' . $file)) {
-                  $this->recursiveCopy($source . '/' . $file, $destination . '/' . $file);
+                  self::recursiveCopy($source . '/' . $file, $destination . '/' . $file);
               } else {
                   copy($source . '/' . $file, $destination . '/' . $file);
               }

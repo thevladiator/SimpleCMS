@@ -7,6 +7,9 @@
     <meta name="description" content="<?php echo htmlspecialchars($page->title, ENT_QUOTES, 'UTF-8'); ?> Page">
     <meta name="robots" content="index, follow">
     <link rel="stylesheet" type="text/css" href="../styles/site.css">
+    <link rel="icon" type="image/x-icon" href="../media/favicons/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="../media/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../media/favicons/favicon-32x32.png">
     <title><?php echo htmlspecialchars($page->title, ENT_QUOTES, 'UTF-8'); ?></title>
   </head>
   <body>
