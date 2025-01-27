@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="Static Website, Website Generator">
-    <link rel="stylesheet" type="text/css" href="generator/styles/site.css">
+    <link rel="stylesheet" type="text/css" href="./content/styles/site.css">
     <title>Static Blog Generator</title>
   <script>
     function generateSite() {
@@ -18,28 +18,15 @@
       };
       xhr.send();
     }
-
-    function generateTestSite() {
-      document.getElementById('output').innerHTML = '';
-      var xhr = new XMLHttpRequest();
-      xhr.open('GET', 'generator/generators/generateTest.php', true);
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-          document.getElementById('output').innerHTML = xhr.responseText;
-        }
-      };
-      xhr.send();
-    }
   </script>
 </head>
 <body style="font-size:18px">
   <h1 id="site-title" style="color: white">Static Blog Generator</h1>
   <hr />
   <ol>
-    <li><a href="javascript:void(0);" onclick="generateTestSite();">Generate TEST Site</a></li>
-    <li><a href="javascript:void(0);" onclick="generateSite();">Generate PROD Site</a></li>
+    <li><a href="javascript:void(0);" onclick="generateSite();">Generate Static Blog</a></li>
   </ol>
-  <h2 style="color: white">Output:</h2>
-  <div id="output" style="border: 1px solid var(--color-accent); padding: 10px; margin-top: 20px; color:white"></div>
+  <h2 style="color: var(--background-color)">Output:</h2>
+  <div id="output" style="border: 1px solid var(--color-accent); padding: 10px; margin-top: 20px; color:var(--background-color)"></div>
 </body>
 </html>

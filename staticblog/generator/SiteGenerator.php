@@ -163,7 +163,7 @@
     }
 
     private function copyStyles($outputRoot) {
-      $styleInputFile = $this->config->GENERATOR_ROOT . "/styles/site.css";
+      $styleInputFile = $this->config->CONTENT_ROOT . "/styles/site.css";
       $styleOutputFile = strval($outputRoot) . "/styles/site.css";
       copy($styleInputFile, $styleOutputFile);
       echo "<br />+ Copied: $styleOutputFile";
