@@ -1,7 +1,7 @@
 <?php
 
 class Utilities {
-  public static function convertTitleToSlug ($title) {
+  public static function convertTitleToSlug (string $title) {
     // Convert the string to lowercase
     $lowercaseString = strtolower($title);
 
@@ -28,7 +28,7 @@ class Utilities {
     return preg_replace($search, $replace, $html);
   }
 
-  public static function deleteDirectoryAndRecreate ($dir) {
+  public static function deleteDirectoryAndRecreate (string $dir) {
     // Delete and recreate the folder
     if (is_dir($dir)) {
       self::deleteDirectory($dir);
@@ -37,7 +37,7 @@ class Utilities {
     mkdir($dir, 0777, true);
   }
 
-  private static function deleteDirectory($dir) {
+  private static function deleteDirectory(string $dir) {
     $DIRECTORY_SEPARATOR = '/';
     if (!file_exists($dir)) {
         return true;
@@ -56,7 +56,7 @@ class Utilities {
     return rmdir($dir);
   }
 
-  public static function recursiveCopy($source, $destination) {
+  public static function recursiveCopy(string $source, string $destination) {
     $dir = opendir($source);
     @mkdir($destination);
 

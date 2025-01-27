@@ -5,11 +5,11 @@ require_once dirname(__FILE__) . '/domain/Article.php';
 require_once dirname(__FILE__) . '/domain/Page.php';
 
 class ContentList {
-  private $articles = [];
-  private $pages = [];
-  private $categories = [];
-  private $tags = [];
-  private $config;
+  private array $articles = [];
+  private array $pages = [];
+  private array $categories = [];
+  private array $tags = [];
+  private Config $config;
 
   // Constructor
   public function __construct() {
@@ -59,7 +59,7 @@ class ContentList {
     return $this->pages;
   }
 
-  public function getArticlesPerCategory($category) {
+  public function getArticlesPerCategory(Category $category) {
     $articlesPerCategory = [];
     foreach($this->articles as $article) {
       if($article->category == $category->title) {
@@ -69,7 +69,7 @@ class ContentList {
     return $articlesPerCategory;
   }
 
-  public  function getArticlesPerTag($tag) {
+  public function getArticlesPerTag(Tag $tag) {
     $articlesPerTag = [];
     foreach($this->articles as $article) {
       if(in_array($tag->title, $article->tags)) {

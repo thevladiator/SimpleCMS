@@ -18,18 +18,18 @@ class SiteGenerator {
 
   public function generateSite() {
     echo '<hr />';
-    $this->cleanupSiteFolders($this->config->SITE_ROOT);
-    $this->copyStyles($this->config->SITE_ROOT);
-    $this->copyMedia($this->config->SITE_ROOT);
+    $this->cleanupSiteFolders(strval($this->config->SITE_ROOT));
+    $this->copyStyles(strval($this->config->SITE_ROOT));
+    $this->copyMedia(strval($this->config->SITE_ROOT));
     $this->generateMenu();
-    $this->generateArticleFiles($this->config->SITE_ROOT);
-    $this->generatePageFiles($this->config->SITE_ROOT);
-    $this->generateCategoryPages($this->config->SITE_ROOT);
-    $this->generateTagPages($this->config->SITE_ROOT);
-    $this->generateHomePage($this->config->SITE_ROOT);
+    $this->generateArticleFiles(strval($this->config->SITE_ROOT));
+    $this->generatePageFiles(strval($this->config->SITE_ROOT));
+    $this->generateCategoryPages(strval($this->config->SITE_ROOT));
+    $this->generateTagPages(strval($this->config->SITE_ROOT));
+    $this->generateHomePage(strval($this->config->SITE_ROOT));
     echo '<hr />';
   }
-  public function generateHomePage($outputRoot) {
+  public function generateHomePage(string $outputRoot) {
     $homeInputFile = $this->config->GENERATOR_ROOT . '/templates/home.php';
     $homeOutputFile = strval($outputRoot) . '/index.html';
 
@@ -67,11 +67,11 @@ class SiteGenerator {
     echo "<br />+ Generated: $menuOutputFile";
   }
 
-  public function generateArticleFiles($outputRoot) {
+  public function generateArticleFiles(string $outputRoot) {
     $articles = $this->contentList->getArticles();
     foreach($articles as $article) {
       $articleInputFile = $this->config->GENERATOR_ROOT . "/templates/article.php";
-      $articleOutputFile = strval($outputRoot) . "/articles/{$article->slug}.html";
+      $articleOutputFile = $outputRoot . "/articles/{$article->slug}.html";
       ob_start();
       extract(['siteUrl' => $this->config->SITE_URL_ROOT]);
       extract(['siteName' => $this->config->SITE_NAME]);
@@ -103,14 +103,14 @@ class SiteGenerator {
     }
   }
 
-  public function generateCategoryPages($outputRoot) {
+  public function generateCategoryPages(string $outputRoot) {
     $categories = $this->contentList->getCategories();
     foreach($categories as $category) {
       $this->generateCategoryPage($category, $outputRoot);
     }
   }
 
-  private function generateCategoryPage($category, $outputRoot) {
+  private function generateCategoryPage($category, string $outputRoot) {
     $articlesPerCategory = $this->contentList->getArticlesPerCategory($category);
 
     $articleListHtml = '';
@@ -118,7 +118,7 @@ class SiteGenerator {
       $articleListHtml .= $article->toListItemHTML();
     }
     $categoryInputFile = $this->config->GENERATOR_ROOT . "/templates/category.php";
-    $categoryOutputFile = strval($outputRoot) . "/category/{$category->slug}.html";
+    $categoryOutputFile = $outputRoot . "/category/{$category->slug}.html";
     ob_start();
     extract(['siteUrl' => $this->config->SITE_URL_ROOT]);
     extract(['siteName' => $this->config->SITE_NAME]);
@@ -132,14 +132,14 @@ class SiteGenerator {
     echo "<br />+ Generated categories: $categoryOutputFile";
   }
 
-  public function generateTagPages($outputRoot) {
+  public function generateTagPages(string $outputRoot) {
     $tags = $this->contentList->getTags();
     foreach($tags as $tag) {
       $this->generateTagPage($tag, $outputRoot);
     }
   }
 
-  private function generateTagPage($tag, $outputRoot) {
+  private function generateTagPage($tag, string $outputRoot) {
     $articlesPerTag = $this->contentList->getArticlesPerTag($tag);
 
     // Initialize the variable outside the loop
@@ -149,7 +149,7 @@ class SiteGenerator {
     }
 
     $tagInputFile = $this->config->GENERATOR_ROOT . "/templates/tag.php";
-    $tagOutputFile = strval($outputRoot) . "/tag/{$tag->slug}.html";
+    $tagOutputFile = $outputRoot . "/tag/{$tag->slug}.html";
 
     ob_start();
     extract(['siteUrl' => $this->config->SITE_URL_ROOT]);
@@ -163,9 +163,9 @@ class SiteGenerator {
     echo "<br />+ Generated tags: $tagOutputFile";
   }
 
-  private function copyStyles($outputRoot) {
+  private function copyStyles(string $outputRoot) {
     $styleInputFile = $this->config->CONTENT_ROOT . "/styles/site.css";
-    $styleOutputFile = strval($outputRoot) . "/styles/site.css";
+    $styleOutputFile = $outputRoot . "/styles/site.css";
     copy($styleInputFile, $styleOutputFile);
     echo "<br />+ Copied: $styleOutputFile";
   }
