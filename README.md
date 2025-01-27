@@ -1,4 +1,4 @@
-# staticblog
+# StaticBlog
 
 ## Description
 **staticblog** is a static blog generator that allows you to create and manage a static blog with ease. It works with straight files containing HTML markup as the content input but without the burden of creating full HTML structure tags. It only needs HTML formatting tags.
@@ -26,12 +26,18 @@ To install `staticblog`, follow these steps:
 
 2. Directory structure:
   - staticblog
+    - config
+      - config.properties // config the locations for your content and production site
     - content
       - articles // this is for your content
       - database // this is the json file for linking the content
+    - database
+      - articles-db.json // this is your database
+    - media // all your media files
+    - pages // these are your pages
     - generator
       - components // various template components
-      - config // configure site url, content location etc.
+      - config // configuration object created from config.properties
       - domain // these are the domain objects
       - generators // site generator scripts
       - styles // style sheet which will be copied to the site
