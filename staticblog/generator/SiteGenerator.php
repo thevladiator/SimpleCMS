@@ -170,7 +170,6 @@
     }
 
     private function copyMedia() {
-      
       $mediaSourceDir = $this->config->CONTENT_ROOT . "/media";
       $mediaDestinationDir = $this->config->SITE_ROOT . "/media";
       Utilities::recursiveCopy($mediaSourceDir, $mediaDestinationDir);
