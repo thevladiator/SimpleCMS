@@ -3,6 +3,7 @@
   --background-color: white;
   --text-color: black;
   --secondary-color: beige;
+  --tertiary-color: lightgrey;
   --accent-color: red;
   --emphasize-color: green;
 }
@@ -138,6 +139,21 @@ blockquote {
 #menu-list li {
   padding-right: 5px;
   margin-right: 5px;
+}
+
+table {
+  margin: 0 auto;
+  border: 1px solid var(--font-color);
+}
+thead {
+  background-color: var(--secondary-color);
+}
+th, td {
+  padding: 5px;
+}
+
+.even {
+  background-color: var(--tertiary-color);
 }
 
 /* Media query for mobile devices */

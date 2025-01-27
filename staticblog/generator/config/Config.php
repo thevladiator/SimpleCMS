@@ -10,7 +10,6 @@
     public $SITE_DESCRIPTION;
     public $SITE_ROOT;
     public $SITE_URL_ROOT;
-    public $TEST_ROOT;
 
     public function __construct() {
       $this->PROJECT_ROOT = dirname(dirname(__DIR__));
@@ -23,7 +22,6 @@
       $this->SITE_DESCRIPTION = $properties['SITE_DESCRIPTION'];
       $this->SITE_ROOT = $properties['SITE_ROOT'];
       $this->SITE_URL_ROOT = $properties['SITE_URL_ROOT'];
-      $this->TEST_ROOT = $this->PROJECT_ROOT . $properties['TEST_ROOT'];
     }
 
     private function loadProperties($file) {
