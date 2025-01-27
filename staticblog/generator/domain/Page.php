@@ -6,9 +6,9 @@ require_once 'Tag.php';
 
 class Page {
   // Properties
-  public $config;
-  public $title;
-  public $slug;
+  public Config $config;
+  public string $title;
+  public string $slug;
 
   // Constructor
   public function __construct($title, $slug) {

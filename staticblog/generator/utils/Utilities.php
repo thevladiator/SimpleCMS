@@ -11,7 +11,7 @@ class Utilities {
     return $slug;
   }
 
-  public static function minifyHtml($html) {
+  public static function minifyHtml(string $html) {
     // Remove whitespaces after tags, except space
     // Remove whitespaces before tags, except space
     // Shorten multiple whitespace sequences

@@ -6,13 +6,13 @@ require_once 'Tag.php';
 
 class Article {
   // Properties
-  public $config;
-  public $title;
-  public $slug;
-  public $category;
-  public $tags = [];
-  public $categoryObject;
-  public $tagObjects = [];
+  public Config $config;
+  public string $title;
+  public string $slug;
+  public string $category;
+  public array $tags = [];
+  public Category $categoryObject;
+  public array $tagObjects = [];
 
   // Constructor
   public function __construct($title, $slug, $category, $tags) {
@@ -38,7 +38,7 @@ class Article {
     return "<li class=\"article-list-item\"><a href=\"{$this->config->SITE_URL_ROOT}/articles/{$this->slug}.html\">$this->title</a></li>";
   }
 
-  private function convertStringsToTagObjects($tagStrings) {
+  private function convertStringsToTagObjects(array $tagStrings) {
     $tagObjects = [];
     foreach($tagStrings as $tag) {
       $tagObjects[] = new Tag($tag);
@@ -46,7 +46,7 @@ class Article {
     return $tagObjects;
   }
 
-  private function convertTagObjectsToLinks($tagObjects) {
+  private function convertTagObjectsToLinks(array $tagObjects) {
     $tagLinks = [];
     foreach($tagObjects as $tagObject) {
       $tagLinks[] = $tagObject->toLinkHTML();
