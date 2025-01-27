@@ -143,7 +143,7 @@ blockquote {
 
 table {
   margin: 0 auto;
-  border: 1px solid var(--font-color);
+  border: 1px solid var(--text-color);
 }
 thead {
   background-color: var(--secondary-color);
