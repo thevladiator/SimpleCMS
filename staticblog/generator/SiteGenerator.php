@@ -17,20 +17,20 @@
 
     public function generateSite() {
       echo '<hr />';
-      $this->cleanupSiteFolders();
-      $this->copyStyles();
-      $this->copyMedia();
+      $this->cleanupSiteFolders($this->config->SITE_ROOT);
+      $this->copyStyles($this->config->SITE_ROOT);
+      $this->copyMedia($this->config->SITE_ROOT);
       $this->generateMenu();
-      $this->generateArticleFiles();
-      $this->generatePageFiles();
-      $this->generateCategoryPages();
-      $this->generateTagPages();
-      $this->generateHomePage();
+      $this->generateArticleFiles($this->config->SITE_ROOT);
+      $this->generatePageFiles($this->config->SITE_ROOT);
+      $this->generateCategoryPages($this->config->SITE_ROOT);
+      $this->generateTagPages($this->config->SITE_ROOT);
+      $this->generateHomePage($this->config->SITE_ROOT);
       echo '<hr />';
     }
-    public function generateHomePage() {
+    public function generateHomePage($outputRoot) {
       $homeInputFile = $this->config->GENERATOR_ROOT . '/templates/home.php';
-      $homeOutputFile = $this->config->SITE_ROOT . '/index.html';
+      $homeOutputFile = strval($outputRoot) . '/index.html';
 
       $articleListHtml = $this->contentList->toArticleListHTML();
       $pageListHtml = $this->contentList->toPageListHTML();
@@ -66,11 +66,11 @@
       echo "<br />+ Generated: $menuOutputFile";
     }
 
-    public function generateArticleFiles() {
+    public function generateArticleFiles($outputRoot) {
       $articles = $this->contentList->getArticles();
       foreach($articles as $article) {
         $articleInputFile = $this->config->GENERATOR_ROOT . "/templates/article.php";
-        $articleOutputFile = $this->config->SITE_ROOT . "/articles/{$article->slug}.html";
+        $articleOutputFile = strval($outputRoot) . "/articles/{$article->slug}.html";
         ob_start();
         extract(['siteUrl' => $this->config->SITE_URL_ROOT]);
         extract(['siteName' => $this->config->SITE_NAME]);
@@ -84,11 +84,11 @@
       }
     }
 
-    public function generatePageFiles() {
+    public function generatePageFiles($outputRoot) {
       $pages = $this->contentList->getPages();
       foreach($pages as $page) {
         $pageInputFile = $this->config->GENERATOR_ROOT . "/templates/page.php";
-        $pageOutputFile = $this->config->SITE_ROOT . "/pages/{$page->slug}.html";
+        $pageOutputFile = strval($outputRoot) . "/pages/{$page->slug}.html";
         ob_start();
         extract(['siteUrl' => $this->config->SITE_URL_ROOT]);
         extract(['siteName' => $this->config->SITE_NAME]);
@@ -102,14 +102,14 @@
       }
     }
 
-    public function generateCategoryPages() {
+    public function generateCategoryPages($outputRoot) {
       $categories = $this->contentList->getCategories();
       foreach($categories as $category) {
-        $this->generateCategoryPage($category);
+        $this->generateCategoryPage($category, $outputRoot);
       }
     }
 
-    private function generateCategoryPage($category) {
+    private function generateCategoryPage($category, $outputRoot) {
       $articlesPerCategory = $this->contentList->getArticlesPerCategory($category);
 
       $articleListHtml = '';
@@ -117,7 +117,7 @@
         $articleListHtml .= $article->toListItemHTML();
       }
       $categoryInputFile = $this->config->GENERATOR_ROOT . "/templates/category.php";
-      $categoryOutputFile = $this->config->SITE_ROOT . "/category/{$category->slug}.html";
+      $categoryOutputFile = strval($outputRoot) . "/category/{$category->slug}.html";
       ob_start();
       extract(['siteUrl' => $this->config->SITE_URL_ROOT]);
       extract(['siteName' => $this->config->SITE_NAME]);
@@ -131,14 +131,14 @@
       echo "<br />+ Generated categories: $categoryOutputFile";
     }
 
-    public function generateTagPages() {
+    public function generateTagPages($outputRoot) {
       $tags = $this->contentList->getTags();
       foreach($tags as $tag) {
-        $this->generateTagPage($tag);
+        $this->generateTagPage($tag, $outputRoot);
       }
     }
   
-    private function generateTagPage($tag) {
+    private function generateTagPage($tag, $outputRoot) {
       $articlesPerTag = $this->contentList->getArticlesPerTag($tag);
 
       // Initialize the variable outside the loop
@@ -148,7 +148,7 @@
       }
 
       $tagInputFile = $this->config->GENERATOR_ROOT . "/templates/tag.php";
-      $tagOutputFile = $this->config->SITE_ROOT . "/tag/{$tag->slug}.html";
+      $tagOutputFile = strval($outputRoot) . "/tag/{$tag->slug}.html";
 
       ob_start();
       extract(['siteUrl' => $this->config->SITE_URL_ROOT]);
@@ -162,26 +162,26 @@
       echo "<br />+ Generated tags: $tagOutputFile";
     }
 
-    private function copyStyles() {
+    private function copyStyles($outputRoot) {
       $styleInputFile = $this->config->GENERATOR_ROOT . "/styles/site.css";
-      $styleOutputFile = $this->config->SITE_ROOT . "/styles/site.css";
+      $styleOutputFile = strval($outputRoot) . "/styles/site.css";
       copy($styleInputFile, $styleOutputFile);
       echo "<br />+ Copied: $styleOutputFile";
     }
 
-    private function copyMedia() {
+    private function copyMedia($outputRoot) {
       $mediaSourceDir = $this->config->CONTENT_ROOT . "/media";
-      $mediaDestinationDir = $this->config->SITE_ROOT . "/media";
+      $mediaDestinationDir = strval($outputRoot) . "/media";
       Utilities::recursiveCopy($mediaSourceDir, $mediaDestinationDir);
       echo "<br />+ Copied: $mediaDestinationDir";
     }
-    private function cleanupSiteFolders() {
-      Utilities::deleteDirectoryAndRecreate($this->config->SITE_ROOT . "/articles");
-      Utilities::deleteDirectoryAndRecreate($this->config->SITE_ROOT . "/pages");
-      Utilities::deleteDirectoryAndRecreate($this->config->SITE_ROOT . "/category");
-      Utilities::deleteDirectoryAndRecreate($this->config->SITE_ROOT . "/tag");
-      Utilities::deleteDirectoryAndRecreate($this->config->SITE_ROOT . "/media");
-      Utilities::deleteDirectoryAndRecreate($this->config->SITE_ROOT . "/styles");
+    private function cleanupSiteFolders($outputRoot) {
+      Utilities::deleteDirectoryAndRecreate(strval($outputRoot) . "/articles");
+      Utilities::deleteDirectoryAndRecreate(strval($outputRoot) . "/pages");
+      Utilities::deleteDirectoryAndRecreate(strval($outputRoot) . "/category");
+      Utilities::deleteDirectoryAndRecreate(strval($outputRoot) . "/tag");
+      Utilities::deleteDirectoryAndRecreate(strval($outputRoot) . "/media");
+      Utilities::deleteDirectoryAndRecreate(strval($outputRoot) . "/styles");
     }
   }
 ?>
