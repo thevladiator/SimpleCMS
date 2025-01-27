@@ -2,10 +2,10 @@
 :root {
   --background-color: white;
   --text-color: black;
-  --secondary-color: beige;
+  --secondary-color: lightcyan;
   --tertiary-color: lightgrey;
   --accent-color: red;
-  --emphasize-color: green;
+  --emphasize-color: teal;
 }
 
 body {
