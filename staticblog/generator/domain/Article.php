@@ -38,10 +38,6 @@
       return "<li class=\"article-list-item\"><a href=\"{$this->config->SITE_URL_ROOT}/articles/{$this->slug}.html\">$this->title</a></li>";
     }
 
-    public function debugArticle() {
-      echo toListItem();
-    }
-
     private function convertStringsToTagObjects($tagStrings) {
       $tagObjects = [];
       foreach($tagStrings as $tag) {
