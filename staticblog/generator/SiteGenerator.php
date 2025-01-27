@@ -28,7 +28,6 @@
       $this->generateHomePage();
       echo '<hr />';
     }
-
     public function generateHomePage() {
       $homeInputFile = $this->config->GENERATOR_ROOT . '/templates/home.php';
       $homeOutputFile = $this->config->SITE_ROOT . '/index.html';
@@ -38,6 +37,7 @@
       $categoryListHtml = $this->contentList->toCategoryListHTML();
       $tagListHtml = $this->contentList->toTagListHTML();
       ob_start();
+      extract(['siteUrl' => $this->config->SITE_URL_ROOT]);
       extract(['siteName' => $this->config->SITE_NAME]);
       extract(['siteDescription' => $this->config->SITE_DESCRIPTION]);
       extract(['siteKeywords' => $this->config->SITE_KEYWORDS]);
@@ -72,6 +72,7 @@
         $articleInputFile = $this->config->GENERATOR_ROOT . "/templates/article.php";
         $articleOutputFile = $this->config->SITE_ROOT . "/articles/{$article->slug}.html";
         ob_start();
+        extract(['siteUrl' => $this->config->SITE_URL_ROOT]);
         extract(['siteName' => $this->config->SITE_NAME]);
         extract(['article' => $article]);
         include $articleInputFile;
@@ -89,6 +90,7 @@
         $pageInputFile = $this->config->GENERATOR_ROOT . "/templates/page.php";
         $pageOutputFile = $this->config->SITE_ROOT . "/pages/{$page->slug}.html";
         ob_start();
+        extract(['siteUrl' => $this->config->SITE_URL_ROOT]);
         extract(['siteName' => $this->config->SITE_NAME]);
         extract(['page' => $page]);
         include $pageInputFile;
@@ -117,6 +119,7 @@
       $categoryInputFile = $this->config->GENERATOR_ROOT . "/templates/category.php";
       $categoryOutputFile = $this->config->SITE_ROOT . "/category/{$category->slug}.html";
       ob_start();
+      extract(['siteUrl' => $this->config->SITE_URL_ROOT]);
       extract(['siteName' => $this->config->SITE_NAME]);
       extract(['category' => $category]);
       extract(['articleListHtml' => $articleListHtml]);
@@ -148,6 +151,7 @@
       $tagOutputFile = $this->config->SITE_ROOT . "/tag/{$tag->slug}.html";
 
       ob_start();
+      extract(['siteUrl' => $this->config->SITE_URL_ROOT]);
       extract(['siteName' => $this->config->SITE_NAME]);
       extract(['tag' => $tag]);
       extract(['articleListHtml' => $articleListHtml]);
@@ -172,7 +176,6 @@
       Utilities::recursiveCopy($mediaSourceDir, $mediaDestinationDir);
       echo "<br />+ Copied: $mediaDestinationDir";
     }
-
     private function cleanupSiteFolders() {
       Utilities::deleteDirectoryAndRecreate($this->config->SITE_ROOT . "/articles");
       Utilities::deleteDirectoryAndRecreate($this->config->SITE_ROOT . "/pages");

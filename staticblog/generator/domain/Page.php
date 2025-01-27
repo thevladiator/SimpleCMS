@@ -1,8 +1,8 @@
 <?php
 
   require_once dirname(__DIR__) . '/config/Config.php';
-  require_once('Category.php');
-  require_once('Tag.php');
+  require_once 'Category.php';
+  require_once 'Tag.php';
 
   class Page {
     // Properties

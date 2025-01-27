@@ -52,11 +52,6 @@ blockquote {
   font-size: 15px;
 }
 
-#header a {
-  color: var(--background-color);
-  text-decoration: none;
-}
-
 #content {
   background-color: var(--background-color);
   padding: 10px;
@@ -66,6 +61,16 @@ blockquote {
   font-size: 25px;
   font-weight: bold;
 }
+
+#site-title a {
+  text-decoration: none;
+  color: var(--background-color);
+}
+
+#site-title a:hover {
+  color: var(--accent-color);
+}
+
 
 #article-title {
   text-align: center;
@@ -142,7 +147,7 @@ blockquote {
   }
 
   #site-title {
-    font-size: 28px;
+    font-size: 25px;
   }
 
   #footer {
@@ -151,5 +156,9 @@ blockquote {
 
   #article-title {
     font-size: 26px;
+  }
+
+  #menu-list {
+    font-size:20px;
   }
 }

@@ -1,3 +1,5 @@
 <div id="header">
-  <a href="../index.html"><span id="site-title"><span class="accentuate"><?php echo htmlspecialchars($siteName, ENT_QUOTES, 'UTF-8'); ?></span></a>
+  <span id="site-title">
+    <a href="<?php echo $siteUrl . '/index.html'; ?>"><?php echo htmlspecialchars($siteName, ENT_QUOTES, 'UTF-8'); ?></a>
+  </span>
 </div>

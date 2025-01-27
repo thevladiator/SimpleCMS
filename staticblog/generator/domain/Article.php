@@ -1,8 +1,8 @@
 <?php
 
   require_once dirname(__DIR__) . '/config/Config.php';
-  require_once('Category.php');
-  require_once('Tag.php');
+  require_once 'Category.php';
+  require_once 'Tag.php';
 
   class Article {
     // Properties
@@ -27,7 +27,7 @@
 
     public function printArticleMetadata() {
       return "Category: {$this->categoryObject->toLinkHTML()} Tags: "
-              . implode(", ", $this->convertTagObjectsToLinks($this->tagObjects));
+        . implode(", ", $this->convertTagObjectsToLinks($this->tagObjects));
     }
 
     public function getArticleMetadata() {
@@ -35,7 +35,7 @@
     }
 
     public function toListItemHTML() {
-        return "<li class=\"article-list-item\"><a href=\"{$this->config->SITE_URL_ROOT}/articles/{$this->slug}.html\">$this->title</a></li>";
+      return "<li class=\"article-list-item\"><a href=\"{$this->config->SITE_URL_ROOT}/articles/{$this->slug}.html\">$this->title</a></li>";
     }
 
     public function debugArticle() {
