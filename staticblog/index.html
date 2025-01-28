@@ -6,27 +6,27 @@
     <meta name="keywords" content="Static Website, Website Generator">
     <link rel="stylesheet" type="text/css" href="./content/styles/site.css">
     <title>Static Blog Generator</title>
-  <script>
-    function generateSite() {
-      document.getElementById('output').innerHTML = '';
-      var xhr = new XMLHttpRequest();
-      xhr.open('GET', 'generator/generators/generateSite.php', true);
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-          document.getElementById('output').innerHTML = xhr.responseText;
-        }
-      };
-      xhr.send();
-    }
-  </script>
-</head>
-<body style="font-size:18px">
-  <h1 id="site-title" style="color: white">Static Blog Generator</h1>
-  <hr />
-  <ol>
-    <li><a href="javascript:void(0);" onclick="generateSite();">Generate Static Blog</a></li>
-  </ol>
-  <h2 style="color: var(--background-color)">Output:</h2>
-  <div id="output" style="border: 1px solid var(--color-accent); padding: 10px; margin-top: 20px; color:var(--background-color)"></div>
-</body>
+    <script>
+      function generateSite() {
+        document.getElementById('output').innerHTML = '';
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'generator/generators/generateSite.php', true);
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState == 4 && xhr.status == 200) {
+            document.getElementById('output').innerHTML = xhr.responseText;
+          }
+        };
+        xhr.send();
+      }
+    </script>
+  </head>
+  <body style="font-size:18px">
+    <h1 id="site-title" style="color: var(--accent-color)">Static Blog Generator</h1>
+    <hr />
+    <ol>
+      <li><a href="javascript:void(0);" onclick="generateSite();">Generate Static Blog</a></li>
+    </ol>
+    <h2 style="color: var(--background-color)">Output:</h2>
+    <div id="output" style="border: 1px solid var(--background-color); padding: 10px; margin-top: 20px; color:var(--background-color)"></div>
+  </body>
 </html>
