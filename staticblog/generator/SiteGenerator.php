@@ -28,8 +28,9 @@ class SiteGenerator {
     $this->generateCategoryPages(strval($this->config->SITE_ROOT));
     $this->generateTagPages(strval($this->config->SITE_ROOT));
     $this->generateHomePage(strval($this->config->SITE_ROOT));
+    $this->generateSitemap(strval($this->config->SITE_ROOT));
   }
-  
+
   public function generateHomePage(string $outputRoot) {
     $homeInputFile = $this->config->GENERATOR_ROOT . '/templates/home.php';
     $homeOutputFile = strval($outputRoot) . '/index.html';
@@ -51,7 +52,7 @@ class SiteGenerator {
     $htmlContent = ob_get_contents();
     // End and clean the output buffer
     ob_end_clean(); 
-    if($this->$applyMinification) {
+    if($this->applyMinification) {
       $htmlContent = Utilities::minifyHtml($htmlContent);
     }
     // Write the HTML content to the file 
@@ -190,6 +191,7 @@ class SiteGenerator {
     Utilities::recursiveCopy($mediaSourceDir, $mediaDestinationDir);
     echo "<br />+ Copied: $mediaDestinationDir";
   }
+
   private function cleanupSiteFolders($outputRoot) {
     Utilities::deleteDirectoryAndRecreate(strval($outputRoot) . "/articles");
     Utilities::deleteDirectoryAndRecreate(strval($outputRoot) . "/pages");
@@ -197,5 +199,52 @@ class SiteGenerator {
     Utilities::deleteDirectoryAndRecreate(strval($outputRoot) . "/tag");
     Utilities::deleteDirectoryAndRecreate(strval($outputRoot) . "/media");
     Utilities::deleteDirectoryAndRecreate(strval($outputRoot) . "/styles");
+  }
+
+  public function generateSitemap(string $outputRoot) {
+    $sitemapFile = $outputRoot . '/sitemap.xml';
+    $articles = $this->contentList->getArticles();
+
+    $xml = new SimpleXMLElement('<?xml version="1.0" encoding="UTF-8"?><urlset></urlset>');
+    $xml->addAttribute('xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9');
+
+    foreach ($articles as $article) {
+        $url = $xml->addChild('url');
+        $url->addChild('loc', htmlspecialchars('https://www.' . $this->config->SITE_NAME . '/articles/' . $article->slug . '.html'));
+        $url->addChild('lastmod', date('Y-m-d'));
+        $url->addChild('changefreq', 'monthly');
+        $url->addChild('priority', '0.8');
+    }
+
+    $pages = $this->contentList->getPages();
+    foreach($pages as $page) {
+      $url = $xml->addChild('url');
+      $url->addChild('loc', htmlspecialchars('https://www.' . $this->config->SITE_NAME . '/pages/' . $page->slug . '.html'));
+      $url->addChild('lastmod', date('Y-m-d'));
+      $url->addChild('changefreq', 'monthly');
+      $url->addChild('priority', '0.8');
+    }
+
+    $categories = $this->contentList->getCategories();
+    foreach($categories as $category) {
+      $url = $xml->addChild('url');
+      $url->addChild('loc', htmlspecialchars('https://www.' . $this->config->SITE_NAME . '/category/' . $category->slug . '.html'));
+      $url->addChild('lastmod', date('Y-m-d'));
+      $url->addChild('changefreq', 'monthly');
+      $url->addChild('priority', '0.8');
+    }
+
+    $tags = $this->contentList->getTags();
+    foreach($tags as $tag) {
+      $url = $xml->addChild('url');
+      $url->addChild('loc', htmlspecialchars('https://www.' . $this->config->SITE_NAME . '/tag/' . $tag->slug . '.html'));
+      $url->addChild('lastmod', date('Y-m-d'));
+      $url->addChild('changefreq', 'monthly');
+      $url->addChild('priority', '0.8');
+    }
+
+    $xmlContent = $xml->asXML();
+    file_put_contents($sitemapFile, $xmlContent);
+    echo "<br />+ Generated Sitemap: $sitemapFile";
   }
 }
