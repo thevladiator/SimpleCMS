@@ -209,17 +209,17 @@ class SiteGenerator {
     $xml->addAttribute('xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9');
 
     foreach ($articles as $article) {
-        $url = $xml->addChild('url');
-        $url->addChild('loc', htmlspecialchars('https://www.' . $this->config->SITE_NAME . '/articles/' . $article->slug . '.html'));
-        $url->addChild('lastmod', date('Y-m-d'));
-        $url->addChild('changefreq', 'monthly');
-        $url->addChild('priority', '0.8');
+      $url = $xml->addChild('url');
+      $url->addChild('loc', htmlspecialchars("https://www.{$this->config->SITE_NAME}/articles/{$article->slug}.html"));
+      $url->addChild('lastmod', date('Y-m-d'));
+      $url->addChild('changefreq', 'monthly');
+      $url->addChild('priority', '0.8');
     }
 
     $pages = $this->contentList->getPages();
     foreach($pages as $page) {
       $url = $xml->addChild('url');
-      $url->addChild('loc', htmlspecialchars('https://www.' . $this->config->SITE_NAME . '/pages/' . $page->slug . '.html'));
+      $url->addChild('loc', htmlspecialchars("https://www.{$this->config->SITE_NAME}/pages/{$page->slug}.html"));
       $url->addChild('lastmod', date('Y-m-d'));
       $url->addChild('changefreq', 'monthly');
       $url->addChild('priority', '0.8');
@@ -228,7 +228,7 @@ class SiteGenerator {
     $categories = $this->contentList->getCategories();
     foreach($categories as $category) {
       $url = $xml->addChild('url');
-      $url->addChild('loc', htmlspecialchars('https://www.' . $this->config->SITE_NAME . '/category/' . $category->slug . '.html'));
+      $url->addChild('loc', htmlspecialchars("https://www.{$this->config->SITE_NAME}/category/{$category->slug}.html"));
       $url->addChild('lastmod', date('Y-m-d'));
       $url->addChild('changefreq', 'monthly');
       $url->addChild('priority', '0.8');
@@ -237,7 +237,7 @@ class SiteGenerator {
     $tags = $this->contentList->getTags();
     foreach($tags as $tag) {
       $url = $xml->addChild('url');
-      $url->addChild('loc', htmlspecialchars('https://www.' . $this->config->SITE_NAME . '/tag/' . $tag->slug . '.html'));
+      $url->addChild('loc', htmlspecialchars("https://www.{$this->config->SITE_NAME}/tag/{$tag->slug}.html"));
       $url->addChild('lastmod', date('Y-m-d'));
       $url->addChild('changefreq', 'monthly');
       $url->addChild('priority', '0.8');
