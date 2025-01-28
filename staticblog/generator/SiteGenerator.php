@@ -19,7 +19,6 @@ class SiteGenerator {
   }
 
   public function generateSite() {
-    echo '<hr />';
     $this->cleanupSiteFolders(strval($this->config->SITE_ROOT));
     $this->copyStyles(strval($this->config->SITE_ROOT));
     $this->copyMedia(strval($this->config->SITE_ROOT));
@@ -29,8 +28,8 @@ class SiteGenerator {
     $this->generateCategoryPages(strval($this->config->SITE_ROOT));
     $this->generateTagPages(strval($this->config->SITE_ROOT));
     $this->generateHomePage(strval($this->config->SITE_ROOT));
-    echo '<hr />';
   }
+  
   public function generateHomePage(string $outputRoot) {
     $homeInputFile = $this->config->GENERATOR_ROOT . '/templates/home.php';
     $homeOutputFile = strval($outputRoot) . '/index.html';
@@ -52,7 +51,7 @@ class SiteGenerator {
     $htmlContent = ob_get_contents();
     // End and clean the output buffer
     ob_end_clean(); 
-    if($this->$applyMinification) {
+    if($this->applyMinification) {
       $htmlContent = Utilities::minifyHtml($htmlContent);
     }
     // Write the HTML content to the file 

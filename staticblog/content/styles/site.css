@@ -35,6 +35,11 @@ blockquote {
   padding-left: 10px;
 }
 
+pre {
+  font-family: inherit;
+  overflow: auto;
+}
+
 #header, #footer {
   display:block;
   background-color: var(--text-color);
