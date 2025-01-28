@@ -51,7 +51,7 @@ class SiteGenerator {
     $htmlContent = ob_get_contents();
     // End and clean the output buffer
     ob_end_clean(); 
-    if($this->applyMinification) {
+    if($this->$applyMinification) {
       $htmlContent = Utilities::minifyHtml($htmlContent);
     }
     // Write the HTML content to the file 
