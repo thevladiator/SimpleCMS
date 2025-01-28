@@ -11,6 +11,10 @@ class Utilities {
     return $slug;
   }
 
+  public static function parseBoolean($string) {
+    return filter_var($string, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
+  }
+
   public static function minifyHtml(string $html) {
     // Remove whitespaces after tags, except space
     // Remove whitespaces before tags, except space

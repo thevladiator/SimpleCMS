@@ -10,6 +10,7 @@ class Config {
   public $SITE_DESCRIPTION;
   public $SITE_ROOT;
   public $SITE_URL_ROOT;
+  public $MINIFY_HTML;
 
   public function __construct() {
     $this->PROJECT_ROOT = dirname(dirname(__DIR__));
@@ -22,6 +23,7 @@ class Config {
     $this->SITE_DESCRIPTION = $properties['SITE_DESCRIPTION'];
     $this->SITE_ROOT = $properties['SITE_ROOT'];
     $this->SITE_URL_ROOT = $properties['SITE_URL_ROOT'];
+    $this->MINIFY_HTML = $properties['MINIFY_HTML'];
   }
 
   private function loadProperties($file) {

@@ -9,11 +9,13 @@ class SiteGenerator {
   private $config;
   private $contentDir;
   private $siteDir;
+  private $applyMinification;
 
   // Constructor
   public function __construct() {
     $this->contentList = new ContentList();
     $this->config = new Config();
+    $this->applyMinification = Utilities::parseBoolean($this->config->MINIFY_HTML);
   }
 
   public function generateSite() {
@@ -50,6 +52,9 @@ class SiteGenerator {
     $htmlContent = ob_get_contents();
     // End and clean the output buffer
     ob_end_clean(); 
+    if($this->$applyMinification) {
+      $htmlContent = Utilities::minifyHtml($htmlContent);
+    }
     // Write the HTML content to the file 
     file_put_contents($homeOutputFile, $htmlContent);
     echo "<br />+ Generated: $homeOutputFile";
@@ -79,8 +84,11 @@ class SiteGenerator {
       include $articleInputFile;
       $htmlContent = ob_get_contents();
       ob_end_clean();
-      $minifiedHtml = Utilities::minifyHtml($htmlContent);
-      file_put_contents($articleOutputFile, $minifiedHtml);
+      if($this->applyMinification) {
+        $htmlContent = Utilities::minifyHtml($htmlContent);
+      }
+      file_put_contents($articleOutputFile, $htmlContent);
+      
       echo "<br />+ Generated Article: $articleOutputFile";
     }
   }
@@ -97,8 +105,10 @@ class SiteGenerator {
       include $pageInputFile;
       $htmlContent = ob_get_contents();
       ob_end_clean();
-      $minifiedHtml = Utilities::minifyHtml($htmlContent);
-      file_put_contents($pageOutputFile, $minifiedHtml);
+      if($this->applyMinification) {
+        $htmlContent = Utilities::minifyHtml($htmlContent);
+      }
+      file_put_contents($pageOutputFile, $htmlContent);
       echo "<br />+ Generated Page: $pageOutputFile";
     }
   }
@@ -127,8 +137,10 @@ class SiteGenerator {
     include $categoryInputFile;
     $htmlContent = ob_get_contents();
     ob_end_clean();
-    $minifiedHtml = Utilities::minifyHtml($htmlContent);
-    file_put_contents($categoryOutputFile, $minifiedHtml);
+    if($this->applyMinification) {
+      $htmlContent = Utilities::minifyHtml($htmlContent);
+    }
+    file_put_contents($categoryOutputFile, $htmlContent);
     echo "<br />+ Generated categories: $categoryOutputFile";
   }
 
@@ -159,6 +171,9 @@ class SiteGenerator {
     include $tagInputFile;
     $htmlContent = ob_get_contents();
     ob_end_clean();
+    if($this->applyMinification) {
+      $htmlContent = Utilities::minifyHtml($htmlContent);
+    }
     file_put_contents($tagOutputFile, $htmlContent);
     echo "<br />+ Generated tags: $tagOutputFile";
   }
