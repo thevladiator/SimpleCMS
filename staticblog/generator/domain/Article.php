@@ -40,6 +40,14 @@ class Article {
     return "<li class=\"article-list-item\"><a href=\"{$this->config->SITE_URL_ROOT}/articles/{$this->slug}.html\">$this->title</a></li>";
   }
 
+  public function toSiteMapItemXML($xml) {
+    $url = $xml->addChild('url');
+    $url->addChild('loc', htmlspecialchars("$this->canonical"));
+    $url->addChild('lastmod', date('Y-m-d'));
+    $url->addChild('changefreq', 'weekly');
+    $url->addChild('priority', '0.5');
+  }
+
   private function convertStringsToTagObjects(array $tagStrings) {
     $tagObjects = [];
     foreach($tagStrings as $tag) {

@@ -203,44 +203,28 @@ class SiteGenerator {
 
   public function generateSitemap(string $outputRoot) {
     $sitemapFile = $outputRoot . '/sitemap.xml';
-    $articles = $this->contentList->getArticles();
 
     $xml = new SimpleXMLElement('<?xml version="1.0" encoding="UTF-8"?><urlset></urlset>');
     $xml->addAttribute('xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9');
 
+    $articles = $this->contentList->getArticles();
     foreach ($articles as $article) {
-      $url = $xml->addChild('url');
-      $url->addChild('loc', htmlspecialchars("https://www.{$this->config->SITE_NAME}/articles/{$article->slug}.html"));
-      $url->addChild('lastmod', date('Y-m-d'));
-      $url->addChild('changefreq', 'monthly');
-      $url->addChild('priority', '0.8');
+      $article->toSiteMapItemXML($xml);
     }
 
     $pages = $this->contentList->getPages();
     foreach($pages as $page) {
-      $url = $xml->addChild('url');
-      $url->addChild('loc', htmlspecialchars("https://www.{$this->config->SITE_NAME}/pages/{$page->slug}.html"));
-      $url->addChild('lastmod', date('Y-m-d'));
-      $url->addChild('changefreq', 'monthly');
-      $url->addChild('priority', '0.8');
+      $page->toSiteMapItemXML($xml);
     }
 
     $categories = $this->contentList->getCategories();
     foreach($categories as $category) {
-      $url = $xml->addChild('url');
-      $url->addChild('loc', htmlspecialchars("https://www.{$this->config->SITE_NAME}/category/{$category->slug}.html"));
-      $url->addChild('lastmod', date('Y-m-d'));
-      $url->addChild('changefreq', 'monthly');
-      $url->addChild('priority', '0.8');
+      $category->toSiteMapItemXML($xml);
     }
 
     $tags = $this->contentList->getTags();
     foreach($tags as $tag) {
-      $url = $xml->addChild('url');
-      $url->addChild('loc', htmlspecialchars("https://www.{$this->config->SITE_NAME}/tag/{$tag->slug}.html"));
-      $url->addChild('lastmod', date('Y-m-d'));
-      $url->addChild('changefreq', 'monthly');
-      $url->addChild('priority', '0.8');
+      $tag->toSiteMapItemXML($xml);
     }
 
     $xmlContent = $xml->asXML();

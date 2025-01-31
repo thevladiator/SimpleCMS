@@ -36,4 +36,12 @@ class Category {
     $words = explode(' ', trim($this->title));
     return implode(', ', $words);
   }
+
+  public function toSiteMapItemXML($xml) {
+    $url = $xml->addChild('url');
+    $url->addChild('loc', htmlspecialchars("$this->canonical"));
+    $url->addChild('lastmod', date('Y-m-d'));
+    $url->addChild('changefreq', 'weekly');
+    $url->addChild('priority', '0.8');
+  }
 }

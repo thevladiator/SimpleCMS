@@ -30,4 +30,12 @@ class Tag {
     $words = explode(' ', trim($this->title));
     return implode(', ', $words);
   }
+
+  public function toSiteMapItemXML($xml) {
+    $url = $xml->addChild('url');
+    $url->addChild('loc', htmlspecialchars("$this->canonical"));
+    $url->addChild('lastmod', date('Y-m-d'));
+    $url->addChild('changefreq', 'monthly');
+    $url->addChild('priority', '0.3');
+  }
 }
