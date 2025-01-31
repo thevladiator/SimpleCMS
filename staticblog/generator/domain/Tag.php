@@ -8,12 +8,14 @@ class Tag {
   private Config $config;
   public string $title;
   public string $slug;
+  public string $canonical;
 
   // Constructor
   public function __construct(string $title) {
     $this->config = new Config();
     $this->title = $title;
     $this->slug = Utilities::convertTitleToSlug($title);
+    $this->canonical = "https://www.{$this->config->SITE_NAME}/tag/{$this->slug}.html";
   }
 
   public function toListItemHTML() {

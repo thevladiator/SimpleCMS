@@ -9,12 +9,14 @@ class Page {
   public Config $config;
   public string $title;
   public string $slug;
+  public string $canonical;
 
   // Constructor
   public function __construct($title, $slug) {
     $this->config = new Config();
     $this->title = $title;
     $this->slug = $slug;
+    $this->canonical = "https://www.{$this->config->SITE_NAME}/pages/{$this->slug}.html";
   }
 
   public function toListItemHTML() {

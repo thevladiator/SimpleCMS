@@ -10,6 +10,7 @@ class Article {
   public string $title;
   public string $slug;
   public string $category;
+  public string $canonical;
   public array $tags = [];
   public Category $categoryObject;
   public array $tagObjects = [];
@@ -20,6 +21,7 @@ class Article {
     $this->title = $title;
     $this->slug = $slug;
     $this->category = $category;
+    $this->canonical = "https://www.{$this->config->SITE_NAME}/articles/{$this->slug}.html";
     $this->tags = $tags;
     $this->categoryObject = new Category($category);
     $this->tagObjects= $this->convertStringsToTagObjects($tags);
