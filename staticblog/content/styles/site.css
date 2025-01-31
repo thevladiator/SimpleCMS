@@ -23,8 +23,20 @@ h1, h2 {
   line-height: 1.6;
 }
 
+h1 {
+  text-align: center;
+  color: var(--accent-color);
+  margin:0;
+}
+
 a {
   color: var(--accent-color)
+}
+
+strong {
+  font-weight: bold;
+  font-style: italic;
+  color: var(--emphasize-color);
 }
 
 blockquote {
@@ -77,13 +89,6 @@ pre {
   color: var(--accent-color);
 }
 
-
-#article-title {
-  text-align: center;
-  color: var(--accent-color);
-  margin:0;
-}
-
 .article-metadata {
   padding: 5px;
   font-style: italic;
@@ -98,12 +103,6 @@ pre {
   background-color: var(--secondary-color);
   padding: 10px;
   margin: 10px;
-}
-
-.emphasize {
-  font-weight: bold;
-  font-style: italic;
-  color: var(--emphasize-color);
 }
 
 .accentuate {
@@ -150,9 +149,11 @@ table {
   margin: 0 auto;
   border: 1px solid var(--text-color);
 }
+
 thead {
   background-color: var(--secondary-color);
 }
+
 th, td {
   padding: 5px;
 }
