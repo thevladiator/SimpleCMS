@@ -15,7 +15,7 @@ class Tag {
     $this->config = new Config();
     $this->title = $title;
     $this->slug = Utilities::convertTitleToSlug($title);
-    $this->canonical = "https://www.{$this->config->SITE_NAME}/tag/{$this->slug}.html";
+    $this->canonical = "{$this->config->SITE_ADDRESS}/tag/{$this->slug}.html";
   }
 
   public function toListItemHTML() {

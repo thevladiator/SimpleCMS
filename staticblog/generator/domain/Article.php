@@ -21,7 +21,7 @@ class Article {
     $this->title = $title;
     $this->slug = $slug;
     $this->category = $category;
-    $this->canonical = "https://www.{$this->config->SITE_NAME}/articles/{$this->slug}.html";
+    $this->canonical = "{$this->config->SITE_ADDRESS}/articles/{$this->slug}.html";
     $this->tags = $tags;
     $this->categoryObject = new Category($category);
     $this->tagObjects= $this->convertStringsToTagObjects($tags);

@@ -11,7 +11,6 @@
     <link rel="icon" type="image/x-icon" href="../media/favicons/favicon.ico">
     <link rel="icon" type="image/png" sizes="16x16" href="../media/favicons/favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../media/favicons/favicon-32x32.png">
-
     <title><?php echo htmlspecialchars($article->title, ENT_QUOTES, 'UTF-8'); ?></title>
   </head>
   <body>

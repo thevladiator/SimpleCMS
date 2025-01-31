@@ -16,7 +16,7 @@ class Page {
     $this->config = new Config();
     $this->title = $title;
     $this->slug = $slug;
-    $this->canonical = "https://www.{$this->config->SITE_NAME}/pages/{$this->slug}.html";
+    $this->canonical = "{$this->config->SITE_ADDRESS}/pages/{$this->slug}.html";
   }
 
   public function toListItemHTML() {

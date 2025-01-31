@@ -15,7 +15,7 @@ class Category {
     $this->config = new Config();
     $this->title = $title;
     $this->slug = Utilities::convertTitleToSlug($title);
-    $this->canonical = "https://www.{$this->config->SITE_NAME}/category/{$this->slug}.html";
+    $this->canonical = "{$this->config->SITE_ADDRESS}/category/{$this->slug}.html";
   }
 
   public function toListItemHTML() {

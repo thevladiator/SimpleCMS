@@ -40,7 +40,7 @@ class SiteGenerator {
     $categoryListHtml = $this->contentList->toCategoryListHTML();
     $tagListHtml = $this->contentList->toTagListHTML();
     ob_start();
-    extract(['siteUrl' => $this->config->SITE_URL_ROOT]);
+    extract(['siteAddress' => $this->config->SITE_ADDRESS]);
     extract(['siteName' => $this->config->SITE_NAME]);
     extract(['siteDescription' => $this->config->SITE_DESCRIPTION]);
     extract(['siteKeywords' => $this->config->SITE_KEYWORDS]);
@@ -78,7 +78,7 @@ class SiteGenerator {
       $articleInputFile = $this->config->GENERATOR_ROOT . "/templates/article.php";
       $articleOutputFile = $outputRoot . "/articles/{$article->slug}.html";
       ob_start();
-      extract(['siteUrl' => $this->config->SITE_URL_ROOT]);
+      extract(['siteAddress' => $this->config->SITE_ADDRESS]);
       extract(['siteName' => $this->config->SITE_NAME]);
       extract(['article' => $article]);
       include $articleInputFile;
@@ -99,7 +99,7 @@ class SiteGenerator {
       $pageInputFile = $this->config->GENERATOR_ROOT . "/templates/page.php";
       $pageOutputFile = $outputRoot . "/pages/{$page->slug}.html";
       ob_start();
-      extract(['siteUrl' => $this->config->SITE_URL_ROOT]);
+      extract(['siteAddress' => $this->config->SITE_ADDRESS]);
       extract(['siteName' => $this->config->SITE_NAME]);
       extract(['page' => $page]);
       include $pageInputFile;
@@ -130,7 +130,7 @@ class SiteGenerator {
     $categoryInputFile = $this->config->GENERATOR_ROOT . "/templates/category.php";
     $categoryOutputFile = $outputRoot . "/category/{$category->slug}.html";
     ob_start();
-    extract(['siteUrl' => $this->config->SITE_URL_ROOT]);
+    extract(['siteAddress' => $this->config->SITE_ADDRESS]);
     extract(['siteName' => $this->config->SITE_NAME]);
     extract(['category' => $category]);
     extract(['articleListHtml' => $articleListHtml]);
@@ -164,7 +164,7 @@ class SiteGenerator {
     $tagOutputFile = $outputRoot . "/tag/{$tag->slug}.html";
 
     ob_start();
-    extract(['siteUrl' => $this->config->SITE_URL_ROOT]);
+    extract(['siteAddress' => $this->config->SITE_ADDRESS]);
     extract(['siteName' => $this->config->SITE_NAME]);
     extract(['tag' => $tag]);
     extract(['articleListHtml' => $articleListHtml]);
