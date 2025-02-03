@@ -33,9 +33,7 @@ a {
   color: var(--accent-color)
 }
 
-strong {
-  font-weight: bold;
-  font-style: italic;
+strong, em {
   color: var(--emphasize-color);
 }
 
