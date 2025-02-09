@@ -1,18 +1,19 @@
 
 :root {
-  --background-color: white;
-  --text-color: black;
-  --secondary-color: lightcyan;
+  --background-color: black;
+  --text-color: white;
+  --link-color: royalblue;
+  --secondary-color: slategray;
   --tertiary-color: lightgrey;
   --accent-color: red;
-  --emphasize-color: teal;
 }
 
 body {
   display:block;
   max-width: 900px;
   margin: 0 auto;
-  background-color: var(--text-color);
+  background-color: var(--background-color);
+  color: var(--text-color);
   font-size: 20px;
   text-align: justify;
   line-height: 1.6;
@@ -30,11 +31,11 @@ h1 {
 }
 
 a {
-  color: var(--accent-color)
+  color: var(--link-color)
 }
 
 strong, em {
-  color: var(--emphasize-color);
+  color: var(--accent-color);
 }
 
 blockquote {
@@ -68,7 +69,6 @@ pre {
 }
 
 #content {
-  background-color: var(--background-color);
   color: var(--text-color);
   padding: 10px;
 }
