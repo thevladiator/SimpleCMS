@@ -26,6 +26,9 @@
     <div id="content">
       <?php require_once (dirname(dirname(__DIR__)) . "/content/pages/{$page->slug}.html"); ?>
     </div>
-    <?php include (dirname(__DIR__) . "/components/footer.php"); ?>
+    <?php
+      include (dirname(__DIR__) . '/components/menu.html'); 
+      include (dirname(__DIR__) . '/components/footer.php');
+    ?>
   </body>
 </html>

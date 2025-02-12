@@ -42,6 +42,9 @@
         <?php echo $tagListHtml; ?>
       </ul>
     </div>
-    <?php include (dirname(__DIR__) . '/components/footer.php'); ?>
+    <?php
+      include (dirname(__DIR__) . '/components/menu.html'); 
+      include (dirname(__DIR__) . '/components/footer.php');
+    ?>
   </body>
 </html>
