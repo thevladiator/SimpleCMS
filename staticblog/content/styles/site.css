@@ -140,20 +140,28 @@ blockquote {
 }
 
 table {
-  margin: 0 auto;
-  border: 1px solid var(--secondary-color);
+  border-collapse: collapse;
+  width: 100%;
 }
 
 thead {
-  background-color: var(--secondary-color);
+  background-color: var(--highlight-background-color);
 }
 
 th, td {
+  border: 1px solid var(--border-color);
   padding: 5px;
 }
 
 .even {
-  background-color: var(--secondary-color);
+  background-color: var(--border-color);
+}
+
+caption {
+  caption-side: bottom;
+  font-style: italic;
+  color: var(--accent-color);
+  background-color: var(--highlight-background-color);
 }
 
 /* Media query for mobile devices */
