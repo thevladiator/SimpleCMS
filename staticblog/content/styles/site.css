@@ -5,7 +5,7 @@
   --link-color: #579DFF;
   --border-color: #A6C5E229;
   --highlight-background-color: black;
-  --accent-color: orangered;
+  --accent-color: mediumseagreen;
 }
 
 .inverted {
@@ -70,7 +70,7 @@ pre {
 }
 
 #site-title a {
-  color: var(--text-color);
+  color: var(--accent-color);
   text-decoration: none;
 }
 
@@ -115,10 +115,9 @@ blockquote {
   max-width: 100%;
   height: auto;
   margin: 0 auto;
-  padding: 10px;
 }
 
-#menu {
+.menu {
   background-color: var(--background-color);
   border-bottom: 1px solid var(--border-color);
   border-top: 1px solid var(--border-color);
@@ -126,7 +125,7 @@ blockquote {
   justify-content: center;
 }
 
-#menu-list {
+.menu-list {
   list-style-type: none;
   display:flex;
   flex-direction: row;
@@ -136,9 +135,8 @@ blockquote {
   margin: 0;
 }
 
-#menu-list li {
-  padding-right: 5px;
-  margin-right: 5px;
+.menu-list li {
+  margin-right: 10px;
 }
 
 table {
