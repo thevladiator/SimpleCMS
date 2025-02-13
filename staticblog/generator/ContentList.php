@@ -123,6 +123,15 @@ class ContentList {
     return $listHtml;
   }
 
+  public function toPageMenuHTML() {
+    $listHtml = '';
+    foreach($this->pages as $page) {
+      $listHtml = $listHtml . $page->toMenuItemHTML();
+    }
+
+    return $listHtml;
+  }
+
   public function toTagListHTML() {
     $listHtml = '';
     foreach($this->tags as $tag) {
@@ -133,6 +142,6 @@ class ContentList {
   }
 
   public function getMenu() {
-    return $this->toCategoryMenuHTML() . $this->toPageListHTML();
+    return $this->toCategoryMenuHTML() . $this->toPageMenuHTML();
   }
 }

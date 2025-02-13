@@ -20,7 +20,15 @@ class Page {
   }
 
   public function toListItemHTML() {
-      return "<li class=\"page-list-item\"><a href=\"{$this->config->SITE_URL_ROOT}/pages/{$this->slug}.html\">$this->title</a></li>";
+    return "<li class=\"page-list-item\">{$this->toLinkHTML()}</li>";
+  }
+
+  public function toMenuItemHTML() {
+    return "<li class=\"menu-list-item\">{$this->toLinkHTML()}</li>";
+  }
+
+  private function toLinkHTML() {
+    return "<a href=\"{$this->config->SITE_URL_ROOT}/pages/{$this->slug}.html\">$this->title</a>";
   }
 
   public function toCommaSeparatedTitle() {
