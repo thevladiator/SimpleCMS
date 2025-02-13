@@ -23,12 +23,17 @@ class Category {
   }
 
   public function toMenuItemHTML() {
-    $firstWord = explode(' ', trim($this->title))[0];
-    return "<li class=\"menu-list-item\">{$this->toLinkHTML()}</li>";
+    return "<li class=\"menu-list-item\">{$this->toMenuLinkHTML()}</li>";
   }
 
   public function toLinkHTML() {
     return "<a href=\"{$this->config->SITE_URL_ROOT}/category/{$this->slug}.html\">$this->title</a>";
+  }
+
+  // In menu display only first word of the title
+  private function toMenuLinkHTML() {
+    $firstWord = explode(' ', trim($this->title))[0];
+    return "<a href=\"{$this->config->SITE_URL_ROOT}/category/{$this->slug}.html\">$firstWord</a>";
   }
 
   public function toCommaSeparatedTitle() {

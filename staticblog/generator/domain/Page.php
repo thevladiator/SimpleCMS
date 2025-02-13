@@ -24,11 +24,17 @@ class Page {
   }
 
   public function toMenuItemHTML() {
-    return "<li class=\"menu-list-item\">{$this->toLinkHTML()}</li>";
+    return "<li class=\"menu-list-item\">{$this->toMenuLinkHTML()}</li>";
   }
 
   private function toLinkHTML() {
     return "<a href=\"{$this->config->SITE_URL_ROOT}/pages/{$this->slug}.html\">$this->title</a>";
+  }
+
+  // In menu display only first word of the title
+  private function toMenuLinkHTML() {
+    $firstWord = explode(' ', trim($this->title))[0];
+    return "<a href=\"{$this->config->SITE_URL_ROOT}/pages/{$this->slug}.html\">$firstWord</a>";
   }
 
   public function toCommaSeparatedTitle() {
