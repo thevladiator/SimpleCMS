@@ -7,8 +7,6 @@ require_once dirname(__FILE__) . '/ContentList.php';
 class SiteGenerator {
   private $contentList;
   private $config;
-  private $contentDir;
-  private $siteDir;
   private $applyMinification;
 
   // Constructor

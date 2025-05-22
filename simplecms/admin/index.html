@@ -4,16 +4,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="Static Website, Website Generator">
-    <link rel="stylesheet" type="text/css" href="./generator/admin/styles/admin.css">
-    <link rel="icon" type="image/x-icon" href="./generator/admin/media/favicon.ico">
-    <link rel="icon" type="image/png" sizes="16x16" href="./generator/admin/media/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="./generator/admin/media/favicon-32x32.png">
+    <link rel="stylesheet" type="text/css" href="../generator/admin/styles/admin.css">
+    <link rel="icon" type="image/x-icon" href="../generator/admin/media/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="../generator/admin/media/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../generator/admin/media/favicon-32x32.png">
     <title>Static Blog Generator</title>
     <script>
       function generateSite() {
         document.getElementById('output').innerHTML = '';
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', 'generator/generators/generateSite.php', true);
+        xhr.open('GET', '../generator/generators/generateSite.php', true);
         xhr.onreadystatechange = function () {
           if (xhr.readyState == 4 && xhr.status == 200) {
             document.getElementById('output').innerHTML = xhr.responseText;
