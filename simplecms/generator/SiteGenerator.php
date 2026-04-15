@@ -16,6 +16,10 @@ class SiteGenerator {
     $this->applyMinification = Utilities::parseBoolean($this->config->MINIFY_HTML);
   }
 
+  public function getSiteRoot(): string {
+    return strval($this->config->SITE_ROOT);
+  }
+
   public function generateSite() {
     $this->cleanupSiteFolders(strval($this->config->SITE_ROOT));
     $this->copyStyles(strval($this->config->SITE_ROOT));
@@ -88,6 +92,29 @@ class SiteGenerator {
       file_put_contents($articleOutputFile, $htmlContent);
       
       echo "<br />+ Generated Article: $articleOutputFile";
+    }
+  }
+
+  public function generateSingleArticle($slug, $outputRoot) {
+    $article = $this->contentList->getArticleBySlug($slug);
+    if($article) {
+      $articleInputFile = $this->config->GENERATOR_ROOT . "/templates/article.php";
+      $articleOutputFile = $outputRoot . "/articles/{$article->slug}.html";
+      ob_start();
+      extract(['siteAddress' => $this->config->SITE_ADDRESS]);
+      extract(['siteName' => $this->config->SITE_NAME]);
+      extract(['article' => $article]);
+      include $articleInputFile;
+      $htmlContent = ob_get_contents();
+      ob_end_clean();
+      if($this->applyMinification) {
+        $htmlContent = Utilities::minifyHtml($htmlContent);
+      }
+      file_put_contents($articleOutputFile, $htmlContent);
+      
+      echo "<br />+ Generated Article: $articleOutputFile";
+    } else {
+      echo "<br />Article not found: $slug";
     }
   }
 

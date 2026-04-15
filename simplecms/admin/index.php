@@ -21,13 +21,36 @@
         };
         xhr.send();
       }
+
+      function generateArticle(slug) {
+        document.getElementById('output').innerHTML = '';
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '../generator/generators/generateSingleArticle.php?slug=' + encodeURIComponent(slug), true);
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState == 4 && xhr.status == 200) {
+            document.getElementById('output').innerHTML = xhr.responseText;
+          }
+        };
+        xhr.send();
+      }
     </script>
   </head>
   <body>
     <h1>Static Blog Generator</h1>
     <ol>
-      <li><a href="javascript:void(0);" onclick="generateSite();">Generate Static Blog</a></li>
+      <li><a href="javascript:void(0);" onclick="generateSite();">Generate Entire Static Blog</a></li>
     </ol>
+    <h2>Generate Individual Articles:</h2>
+    <ul>
+<?php
+require_once '../generator/ContentList.php';
+$contentList = new ContentList();
+$articles = $contentList->getArticles();
+foreach($articles as $article) {
+  echo "<li>{$article->title} <button onclick=\"generateArticle('{$article->slug}')\">Generate</button></li>";
+}
+?>
+    </ul>
     <h2>Output:</h2>
     <div id="output"></div>
   </body>

@@ -55,6 +55,15 @@ class ContentList {
     return $this->articles;
   }
 
+  public function getArticleBySlug($slug) {
+    foreach($this->articles as $article) {
+      if($article->slug == $slug) {
+        return $article;
+      }
+    }
+    return null;
+  }
+
   public function getPages() {
     return $this->pages;
   }
