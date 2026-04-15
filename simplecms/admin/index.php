@@ -41,16 +41,29 @@
       <li><a href="javascript:void(0);" onclick="generateSite();">Generate Entire Static Blog</a></li>
     </ol>
     <h2>Generate Individual Articles:</h2>
-    <ul>
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Last Generated</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
 <?php
 require_once '../generator/ContentList.php';
+require_once '../generator/config/Config.php';
 $contentList = new ContentList();
+$config = new Config();
 $articles = $contentList->getArticles();
 foreach($articles as $article) {
-  echo "<li>{$article->title} <button onclick=\"generateArticle('{$article->slug}')\">Generate</button></li>";
+  $filePath = $config->SITE_ROOT . "/articles/{$article->slug}.html";
+  $lastGenerated = file_exists($filePath) ? date('Y-m-d H:i:s', filemtime($filePath)) : 'Not generated yet';
+  echo "<tr><td>{$article->title}</td><td>{$lastGenerated}</td><td><button onclick=\"generateArticle('{$article->slug}')\">Generate</button></td></tr>";
 }
 ?>
-    </ul>
+      </tbody>
+    </table>
     <h2>Output:</h2>
     <div id="output"></div>
   </body>
