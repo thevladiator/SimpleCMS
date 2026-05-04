@@ -23,7 +23,7 @@ class Category {
   }
 
   public function toMenuItemHTML() {
-    return "<li class=\"menu-list-item\">{$this->toMenuLinkHTML()}</li>";
+    return "<li class=\"menu-list-item\">{$this->toMenuLinkHTML()}</li>\n";
   }
 
   public function toLinkHTML() {
@@ -33,7 +33,7 @@ class Category {
   // In menu display only first word of the title
   private function toMenuLinkHTML() {
     $firstWord = explode(' ', trim($this->title))[0];
-    return "<a href=\"{$this->config->SITE_URL_ROOT}/category/{$this->slug}.html\">$firstWord</a>";
+    return "<a class=\"inverted\" href=\"{$this->config->SITE_URL_ROOT}/category/{$this->slug}.html\">$firstWord</a>";
   }
 
   public function toCommaSeparatedTitle() {

@@ -78,7 +78,7 @@ main {
   color: var(--link-color);
 }
 
-.article-metadata {
+aside {
   padding: 5px;
   font-style: italic;
   text-align: center;
@@ -117,7 +117,7 @@ blockquote {
   margin: 0 auto;
 }
 
-.menu {
+nav {
   background-color: var(--background-color);
   border-bottom: 1px solid var(--border-color);
   border-top: 1px solid var(--border-color);
