@@ -1,3 +1,3 @@
-<div id="footer">
+<footer>
   @Copyright <?php echo date('Y') . ' ' . htmlspecialchars($siteName, ENT_QUOTES, 'UTF-8'); ?>
-</div>
+</footer>

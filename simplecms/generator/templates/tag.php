@@ -23,12 +23,12 @@
       include (dirname(__DIR__) . '/components/header.php');
       include (dirname(__DIR__) . '/components/menu.html');
     ?>
-    <div id="content">
+    <main>
       <h2><?php echo $tag->title; ?> Articles:</h2>
       <ul class="article-list">
         <?php echo $articleListHtml; ?>
       </ul>
-    </div>
+    </main>
     <?php
       include (dirname(__DIR__) . '/components/menu.html'); 
       include (dirname(__DIR__) . '/components/footer.php');

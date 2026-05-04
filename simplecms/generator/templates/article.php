@@ -26,9 +26,9 @@
     <div class="article-metadata">
       <?php echo $article->printArticleMetadata(); ?>
     </div>
-    <div id="content">
+    <main>
       <?php require_once (dirname(dirname(__DIR__)) . "/content/articles/{$article->slug}.html"); ?>
-    </div>
+    </main>
     <div class="article-metadata">
       <?php echo $article->printArticleMetadata(); ?>
     </div>

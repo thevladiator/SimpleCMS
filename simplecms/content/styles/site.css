@@ -47,17 +47,17 @@ pre {
   overflow: auto;
 }
 
-#header, #footer {
+header, footer {
   display:block;
   text-align:center;
   padding: 5px;
 }
 
-#footer {
+footer {
   font-size: 15px;
 }
 
-#content {
+main {
   max-width: 900px;
   margin: 0 auto;
   color: var(--text-color);
@@ -175,7 +175,7 @@ caption {
     font-size: 25px;
   }
 
-  #footer {
+  footer {
     font-size: 18px;
   }
 
