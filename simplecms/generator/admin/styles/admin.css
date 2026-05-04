@@ -41,3 +41,12 @@ a {
   margin-top: 20px;
   color:var(--text-color)
 }
+
+table {
+  border: 1px solid var(--border-color);
+}
+
+table th, table td {
+  border: 1px solid var(--border-color);
+  padding: 5px;
+}

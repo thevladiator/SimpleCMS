@@ -1,5 +1,5 @@
-<div class="menu" class="inverted">
+<nav class="inverted">
   <ul class="menu-list">
     <?php echo $menuListHtml; ?>
   </ul>
-</div>
+</nav>

@@ -23,15 +23,15 @@
       include (dirname(__DIR__) . '/components/header.php');
       include (dirname(__DIR__) . '/components/menu.html');
     ?>
-    <div class="article-metadata">
+    <aside>
       <?php echo $article->printArticleMetadata(); ?>
-    </div>
-    <div id="content">
+    </aside>
+    <main>
       <?php require_once (dirname(dirname(__DIR__)) . "/content/articles/{$article->slug}.html"); ?>
-    </div>
-    <div class="article-metadata">
+    </main>
+    <aside>
       <?php echo $article->printArticleMetadata(); ?>
-    </div>
+    </aside>
     <?php
       include (dirname(__DIR__) . '/components/menu.html'); 
       include (dirname(__DIR__) . '/components/footer.php');

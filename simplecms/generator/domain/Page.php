@@ -34,7 +34,7 @@ class Page {
   // In menu display only first word of the title
   private function toMenuLinkHTML() {
     $firstWord = explode(' ', trim($this->title))[0];
-    return "<a href=\"{$this->config->SITE_URL_ROOT}/pages/{$this->slug}.html\">$firstWord</a>";
+    return "<a class=\"inverted\" href=\"{$this->config->SITE_URL_ROOT}/pages/{$this->slug}.html\">$firstWord</a>";
   }
 
   public function toCommaSeparatedTitle() {

@@ -23,7 +23,7 @@
       include (dirname(__DIR__) . '/components/header.php');
       include (dirname(__DIR__) . '/components/menu.html');
     ?>
-    <div id="content">
+    <main>
       <?php include (dirname(dirname(__DIR__)) . "/content/pages/home.html"); ?>
       <h2>Articles:</h2>
       <ul class="article-list">
@@ -41,7 +41,7 @@
       <ul class="article-list">
         <?php echo $tagListHtml; ?>
       </ul>
-    </div>
+    </main>
     <?php
       include (dirname(__DIR__) . '/components/menu.html'); 
       include (dirname(__DIR__) . '/components/footer.php');
